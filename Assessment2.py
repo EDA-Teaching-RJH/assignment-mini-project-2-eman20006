@@ -5,51 +5,84 @@ pos = ["1", "2", "3", "4", "5"]
 cont = ["Bella", "Charlie", "Kian", "Max", "Zak"]
  
 def main():
+    print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
+    ha = contest.host["name"]
+    print("I am your host: " + ha)
 
+    def pick22():
+        pick2 = input("Are you ready for the categories? ")
+        if pick2 == "yes":
+                print("Wonderful, let's get on with the games!")
+                topics()
+        elif pick2 == "no":
+                print("GAME OVER")
+                print("SHUTTING DOWN ...")
+
+        else:   
+                print("Invalid input")
+                pick22()
     def intro():
-        print("Hello everyone and welcome to\n...\nThe Big Pub Quiz!")
-        ha = contest.host["name"]
-        print("I am your host: " + ha)
-        print("Here are your contestants for the night:")
-        aa = contest.cont1["age"]
-        bb = contest.cont2["age"]
-        cc = contest.cont3["age"]
-        dd = contest.cont4["age"]
-        ee = contest.cont5["age"]
-        print(pos[0], ": "+ cont[0] + " " + str(aa))
-        print(pos[1], ": "+ cont[1] + " " + str(bb))
-        print(pos[2], ": "+ cont[2] + " " + str(cc))
-        print(pos[3], ": "+ cont[3] + " " + str(dd))
-        print(pos[4], ": "+ cont[4] + " " + str(ee))
-        print("And finally, our special guest for the evening: ")
-        y = input("Name: ") #make sure input has no added spaces or error adds
-        x = input("Age: ") #same as above but make just numbers
-        z = input("Country: ") #same as for name
-        contest.cont6.update({"name": y})
-        contest.cont6.update({"age": x})
-        contest.cont6.update({"country": z})
         
-        res1 = re.sub(r'[^a-zA-Z0-9 ]', '', y).capitalize()
-        pos.append("6")
-        cont.append(res1)
-        cont6 = input("How are we all feeling contestants? ")
-        res2 = re.sub(r'[^a-zA-Z0-9 ]', '', cont6).capitalize()
-        contest.cont6.update({"feeling": res2})
-        a = contest.cont1["feeling"]
-        b = contest.cont2["feeling"]
-        c = contest.cont3["feeling"]
-        d = contest.cont4["feeling"]
-        e = contest.cont5["feeling"]
-        
-        print(cont[0],": " + a) 
-        print(cont[1],": " + b) 
-        print(cont[2],": " + c) 
-        print(cont[2],": " + d) 
-        print(cont[4],": " + e) 
-        print(cont[5],": " + res2)
-        print("Wonderful, let's get on with the games!")
-        topics()
+        pick1 = input("Would you like to continue? ")
 
+        if pick1 == "yes":
+
+            print("Here are your contestants for the night:")
+            aa = contest.cont1["age"]
+            bb = contest.cont2["age"]
+            cc = contest.cont3["age"]
+            dd = contest.cont4["age"]
+            ee = contest.cont5["age"]
+            print(pos[0], ": "+ cont[0] + " " + str(aa))
+            print(pos[1], ": "+ cont[1] + " " + str(bb))
+            print(pos[2], ": "+ cont[2] + " " + str(cc))
+            print(pos[3], ": "+ cont[3] + " " + str(dd))
+            print(pos[4], ": "+ cont[4] + " " + str(ee))
+            print("And finally, our special guest for the evening: ")
+            y = input("Name: ") #make sure input has no added spaces or error adds
+
+            def hello(to="world"):
+                print("Hello:", to)
+            if __name__ == "__intro__":
+                intro()
+
+            hello(y)
+
+            x = input("Age: ") #same as above but make just numbers
+            z = input("Country: ") #same as for name
+            contest.cont6.update({"name": y})
+            contest.cont6.update({"age": x})
+            contest.cont6.update({"country": z})
+            
+            res1 = re.sub(r'[^a-zA-Z0-9 ]', '', y).capitalize()
+            pos.append("6")
+            cont.append(res1)
+            cont6 = input("How are we all feeling contestants? ")
+            res2 = re.sub(r'[^a-zA-Z0-9 ]', '', cont6).capitalize()
+            contest.cont6.update({"feeling": res2})
+            a = contest.cont1["feeling"]
+            b = contest.cont2["feeling"]
+            c = contest.cont3["feeling"]
+            d = contest.cont4["feeling"]
+            e = contest.cont5["feeling"]
+            
+            print(cont[0],": " + a) 
+            print(cont[1],": " + b) 
+            print(cont[2],": " + c) 
+            print(cont[2],": " + d) 
+            print(cont[4],": " + e) 
+            print(cont[5],": " + res2)
+           
+            pick22()
+                    
+        elif pick1 == "no":
+            print("GAME OVER")
+            print("SHUTTING DOWN ...")
+            
+
+        else:
+            print("Invalid input")
+            intro()
 
     def science():
         print(" You have chosen " + contest.topics["1"])
@@ -94,8 +127,9 @@ def main():
         print("8." + contest.topics["8"])
         print("9." + contest.topics["9"])
         print("10." + contest.topics["10"])
-
-        numb1 = random.randint(1, 6)
+        randcont()
+    def randcont():
+        numb1 = random.randrange(1, 6)
         print("We will start with contestant number "  + str(numb1))
         if numb1 == 1:
             print("Which topic would you like contestant " + str(numb1) + "? ")
