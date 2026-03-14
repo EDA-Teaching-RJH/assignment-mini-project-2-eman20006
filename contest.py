@@ -1,16 +1,15 @@
-
 host = {
-    "name": "Tim Reads",     #ha
-    "age": 42,              #hb
-    "country": "England"    #hc
+    "name": "Tim Host",     
+    "age": 42,              
+    "country": "England"    
 }
 
 cont1 = {
-    "name": "Bella Spooner",   #1a
-    "age": 24,              #1b
-    "country": "Germany",   #1c
-    "feeling": "Confident",  #1d
-    "favesubj": "Food"      #1e etc for rest of dictionaries
+    "name": "Bella Spooner",   
+    "age": 24,              
+    "country": "Germany",   
+    "feeling": "Confident",  
+    "favesubj": "Food"      
 }
 
 cont2 = {
@@ -38,18 +37,26 @@ cont4 = {
 }
 
 cont5 = {
-    "name": "Jessy Jones",
+    "name": "Zak Cuts",
     "age": 25,  
     "country": "Spain",
     "feeling": "Good",
     "favesubj": "Animals"
 }
 
-Topics = {
+cont6 = {
+    "name": "Unkown",
+    "age": "Unknown",  
+    "country": "Unknown",
+    "feeling": "Unknown",
+    "favesubj": "Uknown"
+}
+
+topics = {
     "1": "Science",
     "2": "Maths",
     "3": "Pop Culture",
-    "4": "Mystery",
+    "4": "Mystery round", 
     "5": "General Knowledge",
     "6": "Food",
     "7": "Animals",
