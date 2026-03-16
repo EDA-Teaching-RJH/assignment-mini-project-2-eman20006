@@ -1,33 +1,40 @@
 import contest
 import re    
 import random
+import csv
 pos = ["1", "2", "3", "4", "5"]
 cont = ["Bella", "Charlie", "Kian", "Max", "Zak"]
- 
+ha = contest.host["name"]
 def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
-    ha = contest.host["name"]
-    print("I am your host: " + ha)
+    
+    print(ha + ": I am your host " + ha)
 
     def pick22():
-        pick2 = input("Are you ready for the categories? ")
+        pick2 = input(ha + ": Are you ready for the categories? ")
         if pick2 == "yes":
-                print("Wonderful, let's get on with the games!")
+                print(ha + ": Wonderful, let's get on with the games!")
                 topics()
         elif pick2 == "no":
-                print("GAME OVER")
+                print(ha + ": GAME OVER")
                 print("SHUTTING DOWN ...")
 
         else:   
-                print("Invalid input")
+                print(ha + ": Invalid input")
                 pick22()
+    def age():
+        x = (input("Age: "))
+        xx = re.sub(r'[^0-9 ]', '', x)
+        print(ha + ": Confirmed age is " + xx)
+        contest.cont6.update({"age": xx})
+           
     def intro():
         
-        pick1 = input("Would you like to continue? ")
+        pick1 = input(ha + ": Would you like to continue? ")
 
         if pick1 == "yes":
 
-            print("Here are your contestants for the night:")
+            print(ha + ": Here are your contestants for the night:")
             aa = contest.cont1["age"]
             bb = contest.cont2["age"]
             cc = contest.cont3["age"]
@@ -38,28 +45,28 @@ def main():
             print(pos[2], ": "+ cont[2] + " " + str(cc))
             print(pos[3], ": "+ cont[3] + " " + str(dd))
             print(pos[4], ": "+ cont[4] + " " + str(ee))
-            print("And finally, our special guest for the evening: ")
-            y = input("Name: ") #make sure input has no added spaces or error adds
-
+            print(ha + ": And finally, our special guest for the evening: ")
+            y = input("Name: ").capitalize() #make sure input has no added spaces or error adds
+            yy = re.sub(r'[^a-zA-Z ]', '', y).capitalize()
             def hello(to="world"):
-                print("Hello:", to)
+                print(ha + ": Hello ", to)
             if __name__ == "__intro__":
                 intro()
 
-            hello(y)
+            hello(yy)
 
-            x = input("Age: ") #same as above but make just numbers
+            age()
             z = input("Country: ") #same as for name
-            contest.cont6.update({"name": y})
-            contest.cont6.update({"age": x})
-            contest.cont6.update({"country": z})
+            zz = re.sub(r'[^a-zA-Z ]', '', z).capitalize()
+            print(ha + ": Confirmed country is " + zz)
+            contest.cont6.update({"name": yy})
+            contest.cont6.update({"country": zz})
             
-            res1 = re.sub(r'[^a-zA-Z0-9 ]', '', y).capitalize()
             pos.append("6")
-            cont.append(res1)
-            cont6 = input("How are we all feeling contestants? ")
-            res2 = re.sub(r'[^a-zA-Z0-9 ]', '', cont6).capitalize()
-            contest.cont6.update({"feeling": res2})
+            cont.append(yy)
+            cont6 = input(ha + ": How are we all feeling contestants? ")
+            cont66 = re.sub(r'[^a-zA-Z ]', '', cont6).capitalize()
+            contest.cont6.update({"feeling": cont66})
             a = contest.cont1["feeling"]
             b = contest.cont2["feeling"]
             c = contest.cont3["feeling"]
@@ -71,52 +78,52 @@ def main():
             print(cont[2],": " + c) 
             print(cont[2],": " + d) 
             print(cont[4],": " + e) 
-            print(cont[5],": " + res2)
+            print(cont[5],": " + cont66)
            
             pick22()
                     
         elif pick1 == "no":
-            print("GAME OVER")
+            print(ha + ": GAME OVER")
             print("SHUTTING DOWN ...")
             
 
         else:
-            print("Invalid input")
+            print(ha + ": Invalid input")
             intro()
 
     def science():
-        print(" You have chosen " + contest.topics["1"])
+        print(ha + ": You have chosen " + contest.topics["1"])
         
     def maths():
-        print("You have chosen " + contest.topics["2"])
+        print(ha + ": You have chosen " + contest.topics["2"])
     
     def pop_culture():
-        print("You have chosen " + contest.topics["3"])
+        print(ha + ": You have chosen " + contest.topics["3"])
 
     def mystery_round():
-        print("You have chosen " + contest.topics["4"])
+        print(ha + ": You have chosen " + contest.topics["4"])
 
     def general_knowledge():
-        print("You have chosen " + contest.topics["5"])
+        print(ha + ": You have chosen " + contest.topics["5"])
 
     def food():
-        print("You have chosen " + contest.topics["6"])
+        print(ha + ": You have chosen " + contest.topics["6"])
 
     def animals():
-        print("You have chosen " + contest.topics["7"])
+        print(ha + ": You have chosen " + contest.topics["7"])
 
     def music():
-        print("You have chosen " + contest.topics["8"])
+        print(ha + ": You have chosen " + contest.topics["8"])
 
     def history():
-        print("You have chosen " + contest.topics["9"])
+        print(ha + ": You have chosen " + contest.topics["9"])
 
     def sport():
-        print("You have chosen " + contest.topics["10"])
+        print(ha + ": You have chosen " + contest.topics["10"])
     
 
     def topics():
-        print("Here are your categories:")
+        print(ha + ": Here are your categories:")
         print("1." + contest.topics["1"])
         print("2." + contest.topics["2"])
         print("3." + contest.topics["3"])
@@ -130,31 +137,32 @@ def main():
         randcont()
     def randcont():
         numb1 = random.randrange(1, 6)
-        print("We will start with contestant number "  + str(numb1))
+        print(ha + ": We will start with contestant number "  + str(numb1))
         if numb1 == 1:
-            print("Which topic would you like contestant " + str(numb1) + "? ")
+            print(ha + ": Which topic would you like contestant " + str(numb1) + "? ")
             choice1_5()
         if numb1 == 2:
-            print("Which topic would you like contestant " + str(numb1) + "? ")
+            print(ha + ": Which topic would you like contestant " + str(numb1) + "? ")
             choice1_5()
         if numb1 == 3:
-            print("Which topic would you like contestant " + str(numb1) + "? ")
+            print(ha + ": Which topic would you like contestant " + str(numb1) + "? ")
             choice1_5()
         if numb1 == 4:
-            print("Which topic would you like contestant " + str(numb1) + "? ")
+            print(ha + ": Which topic would you like contestant " + str(numb1) + "? ")
             choice1_5()
         if numb1 == 5:
-            print("Which topic would you like contestant " + str(numb1) + "? ")
+            print(ha + ": Which topic would you like contestant " + str(numb1) + "? ")
             choice1_5()
         if numb1 == 6:
             choice6()
         else:
-            print("Technical difficulty")
+            print(ha + ": Technical difficulty")
             
 
     def choice1_5():
         number = random.randint(1, 10)
-        print("Contestant has chosen: " + str(number))
+        print(ha + ": Contestant has chosen: " + str(number))
+        
         if number == 1:
             science()
            
@@ -164,26 +172,20 @@ def main():
         elif number == 3:
             pop_culture()
             
-
         elif number == 4:
             mystery_round()
             
-
         elif number == 5:
             general_knowledge()
-            
-
+        
         elif number == 6:
             food()
-            
 
         elif number == 7:
             animals()
-            
 
         elif number == 8:
             music()
-            
 
         elif number == 9:
             history()
@@ -192,12 +194,12 @@ def main():
             sport()
 
         else:
-            print("Experiencing technical issue")
+            print(ha + ": Experiencing technical issue")
+
             
-        
     def choice6():
-        numbr = input("Which topic would you like contestant 6? ")
-        print("You chose: " + str(numbr))
+        numbr = input(ha + ": Which topic would you like contestant 6? ")
+        print(ha + ": You chose: " + str(numbr))
         if numbr == 1:
             science()
 
@@ -229,7 +231,7 @@ def main():
             sport()
 
         else:
-            print("Please stand by")
+            print(ha + ": Please stand by")
 
     intro()
 
