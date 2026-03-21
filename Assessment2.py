@@ -97,6 +97,25 @@ def main():
         
     def maths():
         print(ha + ": You have chosen " + contest.topics["2"])
+        def product(aa, bb):
+            return (aa * bb)
+        contest.maths1
+        print("A: " + contest.maths1["A"])
+        print("B: " + contest.maths1["B"])
+        print("C: " + contest.maths1["C"])
+        print("D: " + contest.maths1["D"])
+        print("The product of which 2 options, makes 64?\n Answer for each must be a one of the provided numbers")
+        a = int(input("Choice: "))
+        b = int(input("Choice: "))
+        aa = re.sub(r'[^0-9 ]', '', a)
+        bb = re.sub(r'[^0-9 ]', '', b)
+        if aa == 16 and bb == 4 or aa == 4 and bb == 16:
+
+            print(f'Product of {aa} and {bb} is {product(aa, bb)}')
+        if aa == "" or bb == "":
+            print("Incorrect\n You score 0 points for this question")
+        else:
+            print("Incorrect\n You score 0 points for this question")
     
     def pop_culture():
         print(ha + ": You have chosen " + contest.topics["3"])
@@ -186,7 +205,8 @@ def main():
             sport()
 
         else:
-            print(ha + ": Experiencing technical issue")
+            print(ha + ": Experiencing technical issue") #added this as keep getting issue where code finishes
+            #on this print output when it isn't meant to
 
             
     def choice6():
