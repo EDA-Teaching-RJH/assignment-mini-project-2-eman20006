@@ -4,6 +4,7 @@ import random   # allows me to make random number generators for random events
 import csv          # allows me to implement classes and work in csv format
 pos = ["1", "2", "3", "4", "5"]   #here are my 2 lists, outside my main function so it is convenient to call and use them
 cont = ["Bella", "Charlie", "Kian", "Max", "Zak"]
+points = [0, 0, 0, 0, 0]
 ha = contest.host["name"]  #accessing data from dictionary from custom import
 def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
@@ -69,6 +70,7 @@ def main():
             
             pos.append("6") #adds to position number list
             cont.append(yy) # adds to contestant name list, now parallel with number above
+            points.append(0)
             cont6 = input(ha + ": How are we all feeling contestants? ") #prompts plaer input
             cont66 = re.sub(r'[^a-zA-Z ]', '', cont6).capitalize() #regex aims to remove input errors
             contest.cont6.update({"feeling": cont66}) #updates data in specific dictionary, stores new data
@@ -96,7 +98,7 @@ def main():
         print(ha + ": You have chosen " + contest.topics["1"]) # considering I am grabbing dictionaries, probs should add to said dictionaries
         
     def maths():
-        print(ha + ": You have chosen " + contest.topics["2"])
+        print(ha + ": You have chosen " + contest.topics["2"]) 
         def product(aa, bb):
             return (aa * bb)
         contest.maths1
@@ -104,7 +106,7 @@ def main():
         print("B: " + contest.maths1["B"])
         print("C: " + contest.maths1["C"])
         print("D: " + contest.maths1["D"])
-        print("The product of which 2 options, makes 64?\n Answer for each must be a one of the provided numbers")
+        print(ha + ": The product of which 2 options, makes 64?\n Answer for each must be a one of the provided numbers")
         a = int(input("Choice: "))
         b = int(input("Choice: "))
         aa = re.sub(r'[^0-9 ]', '', a)
@@ -112,11 +114,14 @@ def main():
         if aa == 16 and bb == 4 or aa == 4 and bb == 16:
 
             print(f'Product of {aa} and {bb} is {product(aa, bb)}')
+            print(ha + ": Correct you have won 10 points")
+            points[5] = 10
         if aa == "" or bb == "":
-            print("Incorrect\n You score 0 points for this question")
+            print(ha + ": Incorrect\n You score 0 points for this question")
+            topics()
         else:
-            print("Incorrect\n You score 0 points for this question")
-    
+            print(ha + ": Incorrect\n You score 0 points for this question")
+            topics()
     def pop_culture():
         print(ha + ": You have chosen " + contest.topics["3"])
 
