@@ -132,7 +132,7 @@ def main():
 
     def maths():
         print(ha + ": You have chosen " + contest.topics["2"]) 
-        print(ha + ": The product of which 2 options, makes 64?\n Answer for each must be a one of the provided numbers")
+        print(ha + ": The product of which 2 options, makes 64?\n Answers must be individually submitted as numbers")
         print("A: " + contest.maths1["A"])
         print("B: " + contest.maths1["B"])
         print("C: " + contest.maths1["C"])
@@ -183,7 +183,7 @@ def main():
         print("24-karat _____ in the air")
         answr = input("Answer: ")
         answrr = re.sub(r'[^a-zA-Z ]', '', answr).strip()
-        if answr == "magic":
+        if answrr == "magic":
             print(ha + ": " + answrr + " is correct")
             print(ha + ": You have won 10 points")
             points[3] = 10
@@ -194,7 +194,7 @@ def main():
 
     def general_knowledge():
         print(ha + ": You have chosen " + contest.topics["5"])
-
+        
     def food():
         print(ha + ": You have chosen " + contest.topics["6"])
 
@@ -239,10 +239,20 @@ def main():
             
 
     def choice1_5():
-        #number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
-        number = 2
+        numb = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
+        
+        #number = 4
         #so the game is never completely the same each time
-        print(ha + ": Contestant has chosen: " + str(number))
+        print(ha + ": Contestant has chosen: " + str(numb))
+        
+        from random import randint
+
+        def random_exclude(*exclude):
+            exclude = set(exclude)
+            randInt = randint(0,9)
+            return random_exclude() if randInt in exclude else randInt 
+        
+        number = (random_exclude(numb))
         
         if number == 1:
             science() #each one of these calls a specific topic function
