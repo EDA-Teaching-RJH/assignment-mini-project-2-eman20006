@@ -4,13 +4,28 @@ import random   # allows me to make random number generators for random events
 import csv          # allows me to implement classes and work in csv format
 pos = ["1", "2", "3", "4", "5"]   #here are my 2 lists, outside my main function so it is convenient to call and use them
 cont = ["Bella", "Charlie", "Kian", "Max", "Zak"]
-points = [0, 0, 0, 0, 0]
+points = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # this list is for the points per topic
 ha = contest.host["name"]  #accessing data from dictionary from custom import
 def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
     
     print(ha + ": I am your host " + ha)
+    def incorrect():
+        print(ha + ": Incorrect\n You score 0 points for this question")
+        
+    def forward():
+        choice = input(ha + ": Would you like to continue? ")
+        if choice == "yes":
+                print(ha + ": Great, on we go!")
+                topics()
+        elif choice == "no":
+                print(ha + ": GAME OVER")
+                print("SHUTTING DOWN ...")
 
+        else:   
+                print(ha + ": Invalid input")
+                forward()
+        
     def pick22():   #a function that gets called later, allows player to continue or end game
         pick2 = input(ha + ": Are you ready for the categories? ")
         if pick2 == "yes":
@@ -96,37 +111,86 @@ def main():
 
     def science(): #currently empty functions soon to be filled with questions and answers, not sure how I will display this tho
         print(ha + ": You have chosen " + contest.topics["1"]) # considering I am grabbing dictionaries, probs should add to said dictionaries
-        
+        print(ha + ": What is the most abundant gas in the Earth's atmosphere? ")
+        print("A: " + contest.science1["A"])
+        print("B: " + contest.science1["B"])
+        print("C: " + contest.science1["C"])
+        print("D: " + contest.science1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "B":
+            print(ha + ": " + contest.science1["B"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[0] = 10
+            forward()
+        elif answr == "A" or answr == "C" or answr == "D":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
+         
+
     def maths():
         print(ha + ": You have chosen " + contest.topics["2"]) 
-        def product(aa, bb):
-            return (aa * bb)
-        contest.maths1
+        print(ha + ": The product of which 2 options, makes 64?\n Answer for each must be a one of the provided numbers")
         print("A: " + contest.maths1["A"])
         print("B: " + contest.maths1["B"])
         print("C: " + contest.maths1["C"])
         print("D: " + contest.maths1["D"])
-        print(ha + ": The product of which 2 options, makes 64?\n Answer for each must be a one of the provided numbers")
         a = int(input("Choice: "))
         b = int(input("Choice: "))
-        aa = re.sub(r'[^0-9 ]', '', a)
-        bb = re.sub(r'[^0-9 ]', '', b)
-        if aa == 16 and bb == 4 or aa == 4 and bb == 16:
-
-            print(f'Product of {aa} and {bb} is {product(aa, bb)}')
+        product = lambda a, b: a * b  #defines a small anonymous function, takes 2 inputs and returns product
+        print(f"The product is: {product(a, b)}") #prints product
+        if a == 16 and b == 4:
             print(ha + ": Correct you have won 10 points")
-            points[5] = 10
-        if aa == "" or bb == "":
-            print(ha + ": Incorrect\n You score 0 points for this question")
-            topics()
+            points[1] = 10
+            forward() #calls function to determine if game continues
+        if a == 4 and b == 16:
+            print(ha + ": Correct you have won 10 points")
+            points[1] = 10
+            forward()
+
+        if a == "" or b == "":
+            incorrect()
+            forward()
         else:
-            print(ha + ": Incorrect\n You score 0 points for this question")
-            topics()
+            incorrect()
+            forward()
+
     def pop_culture():
         print(ha + ": You have chosen " + contest.topics["3"])
+        print(ha + ": What year was the first animated transformers film released? ")
+        print("A: " + contest.pop1["A"])
+        print("B: " + contest.pop1["B"])
+        print("C: " + contest.pop1["C"])
+        print("D: " + contest.pop1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "C":
+            print(ha + ": " + contest.pop1["C"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[2] = 10
+            forward()
+        elif answr == "A" or answr == "B" or answr == "D":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
 
     def mystery_round():
         print(ha + ": You have chosen " + contest.topics["4"])
+        print(ha + ": Fill in the missing lyric to this Bruno Mars song: ")
+        print("24-karat _____ in the air")
+        answr = input("Answer: ")
+        answrr = re.sub(r'[^a-zA-Z ]', '', answr).strip()
+        if answr == "magic":
+            print(ha + ": " + answrr + " is correct")
+            print(ha + ": You have won 10 points")
+            points[3] = 10
+            forward()
+        else:
+            incorrect()
+            forward()
 
     def general_knowledge():
         print(ha + ": You have chosen " + contest.topics["5"])
@@ -171,11 +235,12 @@ def main():
         if numb1 == 6: #this is user number
             choice6() #calls this function
         else:
-            print(ha + ": Technical difficulty")
+            print("")
             
 
     def choice1_5():
-        number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
+        #number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
+        number = 2
         #so the game is never completely the same each time
         print(ha + ": Contestant has chosen: " + str(number))
         
@@ -215,7 +280,8 @@ def main():
 
             
     def choice6():
-        numbr = input(ha + ": Which topic would you like contestant 6? ")
+        numbrr = input(ha + ": Which topic would you like contestant 6? ")
+        numbr = re.sub(r'[^0-9 ]', '', numbrr)
         print(ha + ": You chose: " + str(numbr)) #asks user to choose a topic and depending on input
         #depends on which category
         if numbr == 1:

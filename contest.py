@@ -74,3 +74,16 @@ maths1 = {
 "D": "14"
 }
 
+science1 = {
+"A": "Oxygen",
+"B": "Nitrogen",
+"C": "Carbon Dioxide",
+"D": "Hydrogen"
+}
+
+pop1 = {
+"A": "1991",
+"B": "1979",
+"C": "1986",
+"D": "2003"
+}
