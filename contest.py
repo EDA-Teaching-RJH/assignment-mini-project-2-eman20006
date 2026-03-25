@@ -87,3 +87,31 @@ pop1 = {
 "C": "1986",
 "D": "2003"
 }
+
+general1 = {
+"A": "Auguste Rodin",
+"B": "Michelangelo",
+"C": "Gian Lorenzo Bernini",
+"D": "Donatello"
+}
+
+food1 = {
+"A": "Walnut",
+"B": "Cashew",
+"C": "Hazlenut",
+"D": "Almond"
+}
+
+animal1 = {
+"A": "Lion",
+"B": "Cheetah",
+"C": "Leopard",
+"D": "Pronghorn"
+}
+
+music1 = {
+"A": "System of a down",
+"B": "Hum",
+"C": "Fontaines D.C",
+"D": "Pierce the Veil"
+}

@@ -194,16 +194,84 @@ def main():
 
     def general_knowledge():
         print(ha + ": You have chosen " + contest.topics["5"])
-        
+        print(ha + ": Question: Who made the sculpture, The Thinker? ")
+        print("A: " + contest.general1["A"])
+        print("B: " + contest.general1["B"])
+        print("C: " + contest.general1["C"])
+        print("D: " + contest.general1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "A":
+            print(ha + ": " + contest.general1["A"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[2] = 10
+            forward()
+        elif answr == "B" or answr == "C" or answr == "D":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
+
     def food():
         print(ha + ": You have chosen " + contest.topics["6"])
+        print(ha + ": Which nut is used to make marzipan? ")
+        print("A: " + contest.general1["A"])
+        print("B: " + contest.general1["B"])
+        print("C: " + contest.general1["C"])
+        print("D: " + contest.general1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "D":
+            print(ha + ": " + contest.general1["D"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[2] = 10
+            forward()
+        elif answr == "A" or answr == "B" or answr == "C":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
 
     def animals():
         print(ha + ": You have chosen " + contest.topics["7"])
+        print(ha + ": Which land animal can run the fastest? ")
+        print("A: " + contest.general1["A"])
+        print("B: " + contest.general1["B"])
+        print("C: " + contest.general1["C"])
+        print("D: " + contest.general1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "B":
+            print(ha + ": " + contest.general1["B"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[2] = 10
+            forward()
+        elif answr == "A" or answr == "C" or answr == "D":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
+
 
     def music():
         print(ha + ": You have chosen " + contest.topics["8"])
-
+        print(ha + ": Which music group released the song, Stars, in 1995? ")
+        print("A: " + contest.general1["A"])
+        print("B: " + contest.general1["B"])
+        print("C: " + contest.general1["C"])
+        print("D: " + contest.general1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "B":
+            print(ha + ": " + contest.general1["B"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[2] = 10
+            forward()
+        elif answr == "A" or answr == "C" or answr == "D":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
     def history():
         print(ha + ": You have chosen " + contest.topics["9"])
 
@@ -239,11 +307,11 @@ def main():
             
 
     def choice1_5():
-        numb = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
+        number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
         
         #number = 4
         #so the game is never completely the same each time
-        print(ha + ": Contestant has chosen: " + str(numb))
+        print(ha + ": Contestant has chosen: " + str(number))
         
         from random import randint
 
@@ -252,7 +320,7 @@ def main():
             randInt = randint(0,9)
             return random_exclude() if randInt in exclude else randInt 
         
-        number = (random_exclude(numb))
+        numb = (random_exclude(number))
         
         if number == 1:
             science() #each one of these calls a specific topic function
