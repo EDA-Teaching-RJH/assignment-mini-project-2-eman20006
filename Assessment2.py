@@ -203,7 +203,7 @@ def main():
         if answr == "A":
             print(ha + ": " + contest.general1["A"] + " is correct")
             print(ha + ": You have won 10 points")
-            points[2] = 10
+            points[4] = 10
             forward()
         elif answr == "B" or answr == "C" or answr == "D":
             incorrect()
@@ -215,15 +215,15 @@ def main():
     def food():
         print(ha + ": You have chosen " + contest.topics["6"])
         print(ha + ": Which nut is used to make marzipan? ")
-        print("A: " + contest.general1["A"])
-        print("B: " + contest.general1["B"])
-        print("C: " + contest.general1["C"])
-        print("D: " + contest.general1["D"])
+        print("A: " + contest.food1["A"])
+        print("B: " + contest.food1["B"])
+        print("C: " + contest.food1["C"])
+        print("D: " + contest.food1["D"])
         answr = input("Choice: ").strip().capitalize()
         if answr == "D":
-            print(ha + ": " + contest.general1["D"] + " is correct")
+            print(ha + ": " + contest.food1["D"] + " is correct")
             print(ha + ": You have won 10 points")
-            points[2] = 10
+            points[5] = 10
             forward()
         elif answr == "A" or answr == "B" or answr == "C":
             incorrect()
@@ -235,15 +235,15 @@ def main():
     def animals():
         print(ha + ": You have chosen " + contest.topics["7"])
         print(ha + ": Which land animal can run the fastest? ")
-        print("A: " + contest.general1["A"])
-        print("B: " + contest.general1["B"])
-        print("C: " + contest.general1["C"])
-        print("D: " + contest.general1["D"])
+        print("A: " + contest.animals1["A"])
+        print("B: " + contest.animals1["B"])
+        print("C: " + contest.animals1["C"])
+        print("D: " + contest.animals1["D"])
         answr = input("Choice: ").strip().capitalize()
         if answr == "B":
-            print(ha + ": " + contest.general1["B"] + " is correct")
+            print(ha + ": " + contest.animals1["B"] + " is correct")
             print(ha + ": You have won 10 points")
-            points[2] = 10
+            points[6] = 10
             forward()
         elif answr == "A" or answr == "C" or answr == "D":
             incorrect()
@@ -256,15 +256,15 @@ def main():
     def music():
         print(ha + ": You have chosen " + contest.topics["8"])
         print(ha + ": Which music group released the song, Stars, in 1995? ")
-        print("A: " + contest.general1["A"])
-        print("B: " + contest.general1["B"])
-        print("C: " + contest.general1["C"])
-        print("D: " + contest.general1["D"])
+        print("A: " + contest.music1["A"])
+        print("B: " + contest.music1["B"])
+        print("C: " + contest.music1["C"])
+        print("D: " + contest.music1["D"])
         answr = input("Choice: ").strip().capitalize()
         if answr == "B":
-            print(ha + ": " + contest.general1["B"] + " is correct")
+            print(ha + ": " + contest.music1["B"] + " is correct")
             print(ha + ": You have won 10 points")
-            points[2] = 10
+            points[7] = 10
             forward()
         elif answr == "A" or answr == "C" or answr == "D":
             incorrect()
@@ -274,9 +274,43 @@ def main():
             forward()
     def history():
         print(ha + ": You have chosen " + contest.topics["9"])
+        print(ha + ": When was the battle of Normandy? ")
+        print("A: " + contest.history1["A"])
+        print("B: " + contest.history1["B"])
+        print("C: " + contest.history1["C"])
+        print("D: " + contest.history1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "D":
+            print(ha + ": " + contest.music1["D"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[8] = 10
+            forward()
+        elif answr == "A" or answr == "B" or answr == "C":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
 
     def sport():
         print(ha + ": You have chosen " + contest.topics["10"])
+        print(ha + ": Which country has won the most FIFA world cup titles? ")
+        print("A: " + contest.sport1["A"])
+        print("B: " + contest.sport1["B"])
+        print("C: " + contest.sport1["C"])
+        print("D: " + contest.sport1["D"])
+        answr = input("Choice: ").strip().capitalize()
+        if answr == "C":
+            print(ha + ": " + contest.sport1["C"] + " is correct")
+            print(ha + ": You have won 10 points")
+            points[9] = 10
+            forward()
+        elif answr == "A" or answr == "B" or answr == "D":
+            incorrect()
+            forward()
+        else:
+            incorrect()
+            forward()
     
 
     def topics(): #produces lis of categories which players can choose

@@ -115,3 +115,17 @@ music1 = {
 "C": "Fontaines D.C",
 "D": "Pierce the Veil"
 }
+
+history1 = {
+"A": "1044",
+"B": "1060",
+"C": "1116",
+"D": "1066"
+}
+
+sport1 = {
+"A": "Germany",
+"B": "Italy",
+"C": "Brazil",
+"D": "Argentina"
+}
