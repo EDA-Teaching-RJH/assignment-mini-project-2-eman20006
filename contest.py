@@ -1,4 +1,5 @@
 
+ha = "Tim Host"
 
 host = {
     "name": "Tim Host",     
@@ -129,3 +130,7 @@ sport1 = {
 "C": "Brazil",
 "D": "Argentina"
 }
+
+def incorrect():
+        print(ha + ": Incorrect\n You score 0 points for this question")
+        

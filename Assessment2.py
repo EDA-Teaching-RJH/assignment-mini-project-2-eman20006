@@ -10,8 +10,6 @@ def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
     
     print(ha + ": I am your host " + ha)
-    def incorrect():
-        print(ha + ": Incorrect\n You score 0 points for this question")
         
     def forward():
         choice = input(ha + ": Would you like to continue? ")
@@ -125,10 +123,10 @@ def main():
             points[0] = 10
             forward()
         elif answr == "A" or answr == "C" or answr == "D":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
          
 
@@ -153,10 +151,10 @@ def main():
             forward()
 
         if a == "" or b == "":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
     def pop_culture():
@@ -173,10 +171,10 @@ def main():
             points[2] = 10
             forward()
         elif answr == "A" or answr == "B" or answr == "D":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
     def mystery_round():
@@ -191,7 +189,7 @@ def main():
             points[3] = 10
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
     def general_knowledge():
@@ -208,10 +206,10 @@ def main():
             points[4] = 10
             forward()
         elif answr == "B" or answr == "C" or answr == "D":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
     def food():
@@ -228,10 +226,10 @@ def main():
             points[5] = 10
             forward()
         elif answr == "A" or answr == "B" or answr == "C":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
     def animals():
@@ -248,10 +246,10 @@ def main():
             points[6] = 10
             forward()
         elif answr == "A" or answr == "C" or answr == "D":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
 
@@ -269,10 +267,10 @@ def main():
             points[7] = 10
             forward()
         elif answr == "A" or answr == "C" or answr == "D":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
     def history():
         print(ha + ": You have chosen " + contest.topics["9"])
@@ -288,10 +286,10 @@ def main():
             points[8] = 10
             forward()
         elif answr == "A" or answr == "B" or answr == "C":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
 
     def sport():
@@ -308,10 +306,10 @@ def main():
             points[9] = 10
             forward()
         elif answr == "A" or answr == "B" or answr == "D":
-            incorrect()
+            contest.incorrect()
             forward()
         else:
-            incorrect()
+            contest.incorrect()
             forward()
     
 
@@ -329,7 +327,7 @@ def main():
         print("10." + contest.topics["10"])
         randcont() #calls function
     def randcont():
-        numb1 = random.randrange(1, 6) #picks a random numbe btween 1-6 representing contestants
+        numb1 = random.randrange(1, 7) #picks a random number from 1, upto but not including 7, representing contestants
         if numb1 == 1: #formatting like this 
             #meant less repeated lines of similar code
             print(ha + ": Contestant "  + contest.cont1["name"] + " has been chosen")
@@ -367,18 +365,21 @@ def main():
         
         #number = 4
         #so the game is never completely the same each time
-        print(ha + ": Topic " + str(number) + " has been chose")
+        print(ha + ": Topic " + str(number) + " has been chosen")
         
-        #from random import randint
+        from random import randint
 
-        #def random_exclude(*exclude):
-         #   exclude = set(exclude)
-          #  randInt = randint(0,9)
-           # return random_exclude() if randInt in exclude else randInt 
+        def random_exclude(*exclude):
+            exclude = set(exclude)
+            randInt = randint(1,10)
+            return random_exclude() if randInt in exclude else randInt 
         
-        #numb = (random_exclude(number))
+        numb = (random_exclude(number))
         
-        if number == 1:
+        if numb == "":
+            point_sum()
+
+        elif number == 1:
             science() #each one of these calls a specific topic function
            
         elif number == 2:
@@ -408,14 +409,44 @@ def main():
         elif number == 10:
             sport()
 
+        elif numb == 1:
+            science() 
+           
+        elif numb == 2:
+            maths()
+           
+        elif numb == 3:
+            pop_culture()
+            
+        elif numb== 4:
+            mystery_round()
+            
+        elif numb== 5:
+            general_knowledge()
+        
+        elif numb == 6:
+            food()
+
+        elif numb == 7:
+            animals()
+
+        elif numb== 8:
+            music()
+
+        elif numb == 9:
+            history()
+            
+        elif numb == 10:
+            sport()
+
         else:
             print(ha + ": Experiencing technical issue") #added this as keep getting issue where code finishes
             #on this print output when it isn't meant to
 
             
     def choice6():
-        numbrr = input(ha + ": Which topic would you like contestant " + contest.cont1["name"] + "? ")
-        numbr = re.sub(r'[^0-9 ]', '', numbrr)
+        numbrr = input(ha + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
+        numbr = int(re.sub(r'[^0-9 ]', '', numbrr)) #made this int so read it as number for if statements
         print(ha + ": Topic " + str(numbr) + " has been chosen") #asks user to choose a topic and depending on input
         #depends on which category find a way for this to work
         if numbr == 1:
@@ -450,13 +481,17 @@ def main():
 
         else:
             print(ha + ": Please stand by")
+            print("Incorrect option input\nPlease try again")
+            choice6()
     
     def point_sum(): #when random numb can no longer generate, make it so it calls this function
+        print(ha + ": That's the end of the questions\nLet's see how you did.")
         total = 0
         for num in points:
             total += num
         print(ha + " :" + contest.cont6["name"] + f", your total points are: {total}/100")
-        print(ha + ": Let's see what our other contestnats got:")
+        print(ha + ": Let's see what our other contestants got:")
+        
     intro()
 
     
