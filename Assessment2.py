@@ -17,10 +17,11 @@ def main():
         choice = input(ha + ": Would you like to continue? ")
         if choice == "yes":
                 print(ha + ": Great, on we go!")
-                topics()
+                randcont()
         elif choice == "no":
                 print(ha + ": GAME OVER")
                 print("SHUTTING DOWN ...")
+                quit()
 
         else:   
                 print(ha + ": Invalid input")
@@ -30,6 +31,7 @@ def main():
         pick2 = input(ha + ": Are you ready for the categories? ")
         if pick2 == "yes":
                 print(ha + ": Wonderful, let's get on with the games!")
+                print(ha + ": Unless specified, answer each question via the letter corresponding the answer.\nFailure to do so will result in 0 points on that question, regardless of a right answer.")
                 topics() #function is later in code
         elif pick2 == "no":
                 print(ha + ": GAME OVER")
@@ -235,13 +237,13 @@ def main():
     def animals():
         print(ha + ": You have chosen " + contest.topics["7"])
         print(ha + ": Which land animal can run the fastest? ")
-        print("A: " + contest.animals1["A"])
-        print("B: " + contest.animals1["B"])
-        print("C: " + contest.animals1["C"])
-        print("D: " + contest.animals1["D"])
+        print("A: " + contest.animal1["A"])
+        print("B: " + contest.animal1["B"])
+        print("C: " + contest.animal1["C"])
+        print("D: " + contest.animal1["D"])
         answr = input("Choice: ").strip().capitalize()
         if answr == "B":
-            print(ha + ": " + contest.animals1["B"] + " is correct")
+            print(ha + ": " + contest.animal1["B"] + " is correct")
             print(ha + ": You have won 10 points")
             points[6] = 10
             forward()
@@ -281,7 +283,7 @@ def main():
         print("D: " + contest.history1["D"])
         answr = input("Choice: ").strip().capitalize()
         if answr == "D":
-            print(ha + ": " + contest.music1["D"] + " is correct")
+            print(ha + ": " + contest.history1["D"] + " is correct")
             print(ha + ": You have won 10 points")
             points[8] = 10
             forward()
@@ -328,13 +330,33 @@ def main():
         randcont() #calls function
     def randcont():
         numb1 = random.randrange(1, 6) #picks a random numbe btween 1-6 representing contestants
-        print(ha + ": We will start with contestant number "  + str(numb1))
-        if numb1 == 1 or numb1 == 2 or numb1 == 3 or numb1 == 4 or numb1 == 5: #formatting like this 
+        if numb1 == 1: #formatting like this 
             #meant less repeated lines of similar code
-            print(ha + ": Which topic would you like contestant " + str(numb1) + "? ")
+            print(ha + ": Contestant "  + contest.cont1["name"] + " has been chosen")
+            print(ha + ": Which topic would you like contestant " + contest.cont1["name"] + "? ")
             choice1_5() #as 1-5 arent users, I call this function
-        
-        if numb1 == 6: #this is user number
+
+        elif numb1 == 2:
+            print(ha + ": Contestant "  + contest.cont2["name"] + " has been chosen")
+            print(ha + ": Which topic would you like contestant " + contest.cont2["name"] + "? ")
+            choice1_5()
+
+        elif numb1 == 3:
+            print(ha + ": Contestant "  + contest.cont3["name"] + " has been chosen")
+            print(ha + ": Which topic would you like contestant " + contest.cont3["name"] + "? ")
+            choice1_5()
+
+        elif numb1 == 4:
+            print(ha + ": Contestant "  + contest.cont4["name"] + " has been chosen")
+            print(ha + ": Which topic would you like contestant " + contest.cont4["name"] + "? ")
+            choice1_5()
+
+        elif numb1 == 5:
+            print(ha + ": Contestant "  + contest.cont5["name"] + " has been chosen")
+            print(ha + ": Which topic would you like contestant " + contest.cont5["name"] + "? ")
+            choice1_5()
+
+        elif numb1 == 6: #this is user number
             choice6() #calls this function
         else:
             print("")
@@ -345,16 +367,16 @@ def main():
         
         #number = 4
         #so the game is never completely the same each time
-        print(ha + ": Contestant has chosen: " + str(number))
+        print(ha + ": Topic " + str(number) + " has been chose")
         
-        from random import randint
+        #from random import randint
 
-        def random_exclude(*exclude):
-            exclude = set(exclude)
-            randInt = randint(0,9)
-            return random_exclude() if randInt in exclude else randInt 
+        #def random_exclude(*exclude):
+         #   exclude = set(exclude)
+          #  randInt = randint(0,9)
+           # return random_exclude() if randInt in exclude else randInt 
         
-        numb = (random_exclude(number))
+        #numb = (random_exclude(number))
         
         if number == 1:
             science() #each one of these calls a specific topic function
@@ -392,10 +414,10 @@ def main():
 
             
     def choice6():
-        numbrr = input(ha + ": Which topic would you like contestant 6? ")
+        numbrr = input(ha + ": Which topic would you like contestant " + contest.cont1["name"] + "? ")
         numbr = re.sub(r'[^0-9 ]', '', numbrr)
-        print(ha + ": You chose: " + str(numbr)) #asks user to choose a topic and depending on input
-        #depends on which category
+        print(ha + ": Topic " + str(numbr) + " has been chosen") #asks user to choose a topic and depending on input
+        #depends on which category find a way for this to work
         if numbr == 1:
             science()
 
@@ -428,7 +450,13 @@ def main():
 
         else:
             print(ha + ": Please stand by")
-
+    
+    def point_sum(): #when random numb can no longer generate, make it so it calls this function
+        total = 0
+        for num in points:
+            total += num
+        print(ha + " :" + contest.cont6["name"] + f", your total points are: {total}/100")
+        print(ha + ": Let's see what our other contestnats got:")
     intro()
 
     
