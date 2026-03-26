@@ -10,7 +10,6 @@ ha = contest.host["name"]  #accessing data from dictionary from custom import
 top = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #numbers related to topic amount
 def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
-    
     print(ha + ": I am your host " + ha)
         
     def forward():
@@ -22,7 +21,6 @@ def main():
                 print(ha + ": GAME OVER")
                 print("SHUTTING DOWN ...")
                 quit()
-
         else:   
                 print(ha + ": Invalid input")
                 forward()
@@ -36,10 +34,10 @@ def main():
         elif pick2 == "no":
                 print(ha + ": GAME OVER")
                 print("SHUTTING DOWN ...")
-
         else:   
                 print(ha + ": Invalid input")
                 pick22()
+
     def age(): #this function also gets called later
         x = (input("Age: "))
         xx = re.sub(r'[^0-9 ]', '', x) #regex used to ensure only numbers are recieved
@@ -48,7 +46,6 @@ def main():
             #made it so i can have user retry input
             print(ha + ": Invalid input")
             age()
-            
         else:
             print(ha + ": Confirmed age is " + xx)
             contest.cont6.update({"age": xx}) #when input confirmed as only number, updates data in dictionary
@@ -56,9 +53,7 @@ def main():
     def intro(): #also function that gets called later, allows player to continue or end game
                  #additionally, has the intro to the game with interactive start-up
         pick1 = input(ha + ": Would you like to continue? ")
-
         if pick1 == "yes": #runs code if player chooses to continue
-
             print(ha + ": Here are your contestants for the night:")
             #previusly i accessed dictionary data and made it equal to a variable to then add to a print function
             #cut out middle-man and added dictinary data access code straight in the print function
@@ -75,16 +70,13 @@ def main():
                 print(ha + ": Hello ", to)   #this will greet player after inputting chosen name
             if __name__ == "__intro__":
                 intro()
-
             hello(yy) #calls the greeting def function
-
             age()  #calls age function from earlier
             z = input("Country: ") 
             zz = re.sub(r'[^a-zA-Z ]', '', z).capitalize() #regex similar written code as earlier
             print(ha + ": Confirmed country is " + zz)
             contest.cont6.update({"name": yy})  #updates data in specific dictionary, stores new data
             contest.cont6.update({"country": zz}) #updates data in specific dictionary, stores new data
-            
             pos.append("6") #adds to position number list
             cont.append(yy) # adds to contestant name list, now parallel with number above
             points.append(0) 
@@ -99,14 +91,10 @@ def main():
             print(cont[2],": " + contest.cont4["feeling"]) 
             print(cont[4],": " + contest.cont5["feeling"]) 
             print(cont[5],": " + contest.cont6["feeling"])
-           
-            pick22() #calls function 
-                    
+            pick22() #calls function       
         elif pick1 == "no": #prints and ends code
             print(ha + ": GAME OVER")
             print("SHUTTING DOWN ...")
-            
-
         else: #if neither "yes" or "no" are input, makes user try again
             print(ha + ": Invalid input")
             intro() #calls back to start of def function where choice to continue or end
@@ -131,33 +119,36 @@ def main():
             contest.incorrect()
             forward()
          
-
     def maths():
         print(ha + ": You have chosen " + contest.topics["2"]) 
-        print(ha + ": The product of which 2 options, makes 64?\n Answers must be individually submitted as numbers")
+        print(ha + ": The product of which 2 options, makes 64?\n Answers must be individually submitted as numbers.")
         print("A: " + contest.maths1["A"])
         print("B: " + contest.maths1["B"])
         print("C: " + contest.maths1["C"])
         print("D: " + contest.maths1["D"])
-        a = int(input("Choice: "))
-        b = int(input("Choice: "))
-        product = lambda a, b: a * b  #defines a small anonymous function, takes 2 inputs and returns product
-        print(f"The product is: {product(a, b)}") #prints product
-        if a == 16 and b == 4:
-            print(ha + ": Correct you have won 10 points")
-            points[1] = 10
-            forward() #calls function to determine if game continues
-        if a == 4 and b == 16:
-            print(ha + ": Correct you have won 10 points")
-            points[1] = 10
-            forward()
-
-        if a == "" or b == "":
+        aaa = (input("Choice: "))
+        bbb = (input("Choice: "))
+        aa = (re.sub(r'[^0-9 ]', '', aaa))
+        bb = (re.sub(r'[^0-9 ]', '', bbb))
+        if aa == "" or bb == "":
             contest.incorrect()
             forward()
         else:
-            contest.incorrect()
-            forward()
+            a = int(aa)
+            b = int(bb)
+            product = lambda a, b: a * b  #defines a small anonymous function, takes 2 inputs and returns product
+            print(f"The product is: {product(a, b)}") #prints product
+            if a == 16 and b == 4:
+                print(ha + ": Correct you have won 10 points")
+                points[1] = 10
+                forward() #calls function to determine if game continues
+            if a == 4 and b == 16:
+                print(ha + ": Correct you have won 10 points")
+                points[1] = 10
+                forward()
+            else:
+                contest.incorrect()
+                forward()
 
     def pop_culture():
         print(ha + ": You have chosen " + contest.topics["3"])
@@ -254,7 +245,6 @@ def main():
             contest.incorrect()
             forward()
 
-
     def music():
         print(ha + ": You have chosen " + contest.topics["8"])
         print(ha + ": Which music group released the song, Stars, in 1995? ")
@@ -274,6 +264,7 @@ def main():
         else:
             contest.incorrect()
             forward()
+
     def history():
         print(ha + ": You have chosen " + contest.topics["9"])
         print(ha + ": When was the battle of Normandy? ")
@@ -313,7 +304,6 @@ def main():
         else:
             contest.incorrect()
             forward()
-    
 
     def topics(): #produces lis of categories which players can choose
         print(ha + ": Here are your categories:")
@@ -335,33 +325,27 @@ def main():
             print(ha + ": Contestant "  + contest.cont1["name"] + " has been chosen")
             print(ha + ": Which topic would you like contestant " + contest.cont1["name"] + "? ")
             choice1_5() #as 1-5 arent users, I call this function
-
         elif numb1 == 2:
             print(ha + ": Contestant "  + contest.cont2["name"] + " has been chosen")
             print(ha + ": Which topic would you like contestant " + contest.cont2["name"] + "? ")
             choice1_5()
-
         elif numb1 == 3:
             print(ha + ": Contestant "  + contest.cont3["name"] + " has been chosen")
             print(ha + ": Which topic would you like contestant " + contest.cont3["name"] + "? ")
             choice1_5()
-
         elif numb1 == 4:
             print(ha + ": Contestant "  + contest.cont4["name"] + " has been chosen")
             print(ha + ": Which topic would you like contestant " + contest.cont4["name"] + "? ")
             choice1_5()
-
         elif numb1 == 5:
             print(ha + ": Contestant "  + contest.cont5["name"] + " has been chosen")
             print(ha + ": Which topic would you like contestant " + contest.cont5["name"] + "? ")
             choice1_5()
-
         elif numb1 == 6: #this is user number
             choice6() #calls this function
         else:
             print("")
             
-
     def choice1_5():
         if len(top) == 0:
             point_sum()
@@ -370,37 +354,26 @@ def main():
             print(ha + ": Topic " + str(numb) + " has been chosen")
             if numb in top:
                 top.remove(numb)
-
                 if numb == 1:
                     science() 
-                
                 elif numb == 2:
                     maths()
-                
                 elif numb == 3:
-                    pop_culture()
-                    
+                    pop_culture()    
                 elif numb== 4:
-                    mystery_round()
-                    
+                    mystery_round()    
                 elif numb== 5:
                     general_knowledge()
-                
                 elif numb == 6:
                     food()
-
                 elif numb == 7:
                     animals()
-
                 elif numb== 8:
                     music()
-
                 elif numb == 9:
-                    history()
-                    
+                    history() 
                 elif numb == 10:
                     sport()
-
                 else:
                     print(ha + ": Experiencing technical issue") #added this as keep getting issue where code finishes
                     #on this print output when it isn't meant to
@@ -410,96 +383,88 @@ def main():
             else:
                 print("panic")
 
-            
     def choice6():
         if len(top) == 0:
             point_sum()
         else:
-            number = input(ha + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
-            numb = int(re.sub(r'[^0-9 ]', '', number)) #made this int so read it as number for if statements
-            print(ha + ": Topic " + str(numb) + " has been chosen") #asks user to choose a topic and depending on input
-            #depends on which category find a way for this to work
-            if numb in top:
-                top.remove(numb)
-                if numb == 1:
-                    science()
-
-                elif numb == 2:
-                    maths()
-
-                elif numb == 3:
-                    pop_culture()
-
-                elif numb == 4:
-                    mystery_round()
-
-                elif numb == 5:
-                    general_knowledge()
-
-                elif numb == 6:
-                    food()
-
-                elif numb == 7:
-                    animals()
-
-                elif numb == 8:
-                    music()
-
-                elif numb == 9:
-                    history()
-
-                elif numb == 10:
-                    sport()
-
-                else:
-                    print(ha + ": Please stand by")
+            numbers = input(ha + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
+            numbnumb = (re.sub(r'[^0-9 ]', '', numbers)) #made this int so read it as number for if statements
+            if numbnumb == "":
                     print("Incorrect or unavailable option input\nPlease try again")
                     choice6()
-            elif numb not in top:
-                print("Topic has already been chosen.\nTry again.")
-                choice6()
             else:
-                print("ISSUE")
+                numb = int(numbnumb)
+                print(ha + ": Topic " + str(numb) + " has been chosen") #asks user to choose a topic and depending on input
+                #depends on which category find a way for this to work
+                if numb in top:
+                    top.remove(numb)
+                    if numb == 1:
+                        science()
+                    elif numb == 2:
+                        maths()
+                    elif numb == 3:
+                        pop_culture()
+                    elif numb == 4:
+                        mystery_round()
+                    elif numb == 5:
+                        general_knowledge()
+                    elif numb == 6:
+                        food()
+                    elif numb == 7:
+                        animals()
+                    elif numb == 8:
+                        music()
+                    elif numb == 9:
+                        history()
+                    elif numb == 10:
+                        sport()
+                    else:
+                        print(ha + ": Please stand by")
+                        print("Incorrect or unavailable option input\nPlease try again")
+                        choice6()
+                elif numb not in top:
+                 print("Topic has already been chosen.\nTry again.")
+                 choice6()
+                elif numb == "":
+                 print("Invalid input")
+                 choice6()
+                else:
+                    print("ISSUE")
     
     def point_sum(): #when random numb can no longer generate, make it so it calls this function
         print(ha + ": I'm afraid that's the end of the questions\nLet's see how you did.")
         total = 0
         for num in points:
             total += num
-        print(ha + " :" + contest.cont6["name"] + f", your total points are: {total}/100")
+        print(ha + ": " + contest.cont6["name"] + f", your total points are: {total}/100")
         print(ha + ": Let's see what our other contestants got:")
         print("Generating results:")
-        cont1 = contest.randpoint()
-        cont2 = contest.randpoint()
-        cont3 = contest.randpoint()
-        cont4 = contest.randpoint()
-        cont5 = contest.randpoint()
-        print(ha + ": " + contest.cont1 + " scored " + cont1)
-        print(ha + ": " + contest.cont2 + " scored " + cont2)
-        print(ha + ": " + contest.cont3 + " scored " + cont3)
-        print(ha + ": " + contest.cont4 + " scored " + cont4)
-        print(ha + ": " + contest.cont5 + " scored " + cont5)
+        cont1 = random.randrange(0, 100,10)
+        cont2 = random.randrange(0, 100,10)
+        cont3 = random.randrange(0, 100,10)
+        cont4 = random.randrange(0, 100,10)
+        cont5 = random.randrange(0, 100,10)
+        print(ha + ": " + contest.cont1["name"] + " scored " + str(cont1))
+        print(ha + ": " + contest.cont2["name"] + " scored " + str(cont2))
+        print(ha + ": " + contest.cont3["name"] + " scored " + str(cont3))
+        print(ha + ": " + contest.cont4["name"] + " scored " + str(cont4))
+        print(ha + ": " + contest.cont5["name"] + " scored " + str(cont5))
         score[0] = cont1
         score[1] = cont2
         score[2] = cont3
         score[3] = cont4
         score[4] = cont5
         x = sorted(score)
-
-        if x >= total:
-            contest.loss
-        elif x == total:
-            contest.tie
-        elif total >= x:
-            contest.win
+        big = x[4]
+        if big >= total:
+            contest.loss()
+        elif big == total:
+            contest.tie()
+        elif total >= big:
+            contest.win()
         else:
             print("ISSUE PLEASE STAND BY")
         
-
-
     intro()
 
-    
-    
-   
 main()
