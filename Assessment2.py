@@ -363,117 +363,106 @@ def main():
             
 
     def choice1_5():
-        #number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
-        numb = random.choice(top)
-        print(ha + ": Topic " + str(numb) + " has been chosen")
-        top.remove(numb)
-
-
-
-
-
-
-
-        #number = 4
-        #so the game is never completely the same each time
-        #print(ha + ": Topic " + str(number) + " has been chosen")
-        
-        #from random import randint
-
-        #def random_exclude(*exclude):
-          #  exclude = set(exclude)
-           # randInt = randint(1,10)
-         #   return random_exclude() if randInt in exclude else randInt 
-        
-        #numb = (random_exclude(number))
-        
-        if numb == "":
+        if len(top) == 0:
             point_sum()
-
-        elif numb == 1:
-            science() 
-           
-        elif numb == 2:
-            maths()
-           
-        elif numb == 3:
-            pop_culture()
-            
-        elif numb== 4:
-            mystery_round()
-            
-        elif numb== 5:
-            general_knowledge()
-        
-        elif numb == 6:
-            food()
-
-        elif numb == 7:
-            animals()
-
-        elif numb== 8:
-            music()
-
-        elif numb == 9:
-            history()
-            
-        elif numb == 10:
-            sport()
-
         else:
-            print(ha + ": Experiencing technical issue") #added this as keep getting issue where code finishes
-            #on this print output when it isn't meant to
+            numb = random.choice(top)
+            print(ha + ": Topic " + str(numb) + " has been chosen")
+            if numb in top:
+                top.remove(numb)
+
+                if numb == 1:
+                    science() 
+                
+                elif numb == 2:
+                    maths()
+                
+                elif numb == 3:
+                    pop_culture()
+                    
+                elif numb== 4:
+                    mystery_round()
+                    
+                elif numb== 5:
+                    general_knowledge()
+                
+                elif numb == 6:
+                    food()
+
+                elif numb == 7:
+                    animals()
+
+                elif numb== 8:
+                    music()
+
+                elif numb == 9:
+                    history()
+                    
+                elif numb == 10:
+                    sport()
+
+                else:
+                    print(ha + ": Experiencing technical issue") #added this as keep getting issue where code finishes
+                    #on this print output when it isn't meant to
+            elif numb not in top:
+                print("Topic has already been chosen.\nTry again.")
+                choice1_5()
+            else:
+                print("panic")
 
             
     def choice6():
-        if len(top) == []:
+        if len(top) == 0:
+            point_sum()
+        else:
             number = input(ha + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
             numb = int(re.sub(r'[^0-9 ]', '', number)) #made this int so read it as number for if statements
             print(ha + ": Topic " + str(numb) + " has been chosen") #asks user to choose a topic and depending on input
             #depends on which category find a way for this to work
-            top.remove(numb)
-            if numb == 1:
-                science()
+            if numb in top:
+                top.remove(numb)
+                if numb == 1:
+                    science()
 
-            elif numb == 2:
-                maths()
+                elif numb == 2:
+                    maths()
 
-            elif numb == 3:
-                pop_culture()
+                elif numb == 3:
+                    pop_culture()
 
-            elif numb == 4:
-                mystery_round()
+                elif numb == 4:
+                    mystery_round()
 
-            elif numb == 5:
-                general_knowledge()
+                elif numb == 5:
+                    general_knowledge()
 
-            elif numb == 6:
-                food()
+                elif numb == 6:
+                    food()
 
-            elif numb == 7:
-                animals()
+                elif numb == 7:
+                    animals()
 
-            elif numb == 8:
-                music()
+                elif numb == 8:
+                    music()
 
-            elif numb == 9:
-                history()
+                elif numb == 9:
+                    history()
 
-            elif numb == 10:
-                sport()
+                elif numb == 10:
+                    sport()
 
-            else:
-                print(ha + ": Please stand by")
-                print("Incorrect or unavailable option input\nPlease try again")
+                else:
+                    print(ha + ": Please stand by")
+                    print("Incorrect or unavailable option input\nPlease try again")
+                    choice6()
+            elif numb not in top:
+                print("Topic has already been chosen.\nTry again.")
                 choice6()
-        elif len(top) == 0:
-            point_sum()   
-
-        else:
-            print("error")
+            else:
+                print("ISSUE")
     
     def point_sum(): #when random numb can no longer generate, make it so it calls this function
-        print(ha + ": That's the end of the questions\nLet's see how you did.")
+        print(ha + ": I'm afraid that's the end of the questions\nLet's see how you did.")
         total = 0
         for num in points:
             total += num
