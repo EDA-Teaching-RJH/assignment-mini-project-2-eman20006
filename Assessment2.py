@@ -5,6 +5,7 @@ import csv          # allows me to implement classes and work in csv format
 pos = ["1", "2", "3", "4", "5"]   #here are my 2 lists, outside my main function so it is convenient to call and use them
 cont = ["Bella", "Charlie", "Kian", "Max", "Zak"]
 points = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # this list is for the points per topic
+score = [0, 0, 0, 0, 0] #this is a list for each other contestant total
 ha = contest.host["name"]  #accessing data from dictionary from custom import
 def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
@@ -85,7 +86,7 @@ def main():
             
             pos.append("6") #adds to position number list
             cont.append(yy) # adds to contestant name list, now parallel with number above
-            points.append(0)
+            points.append(0) 
             cont6 = input(ha + ": How are we all feeling contestants? ") #prompts plaer input
             cont66 = re.sub(r'[^a-zA-Z ]', '', cont6).capitalize() #regex aims to remove input errors
             contest.cont6.update({"feeling": cont66}) #updates data in specific dictionary, stores new data
@@ -491,7 +492,35 @@ def main():
             total += num
         print(ha + " :" + contest.cont6["name"] + f", your total points are: {total}/100")
         print(ha + ": Let's see what our other contestants got:")
+        print("Generating results:")
+        cont1 = contest.randpoint()
+        cont2 = contest.randpoint()
+        cont3 = contest.randpoint()
+        cont4 = contest.randpoint()
+        cont5 = contest.randpoint()
+        print(ha + ": " + contest.cont1 + " scored " + cont1)
+        print(ha + ": " + contest.cont2 + " scored " + cont2)
+        print(ha + ": " + contest.cont3 + " scored " + cont3)
+        print(ha + ": " + contest.cont4 + " scored " + cont4)
+        print(ha + ": " + contest.cont5 + " scored " + cont5)
+        score[0] = cont1
+        score[1] = cont2
+        score[2] = cont3
+        score[3] = cont4
+        score[4] = cont5
+        x = sorted(score)
+
+        if x >= total:
+            contest.loss
+        elif x == total:
+            contest.tie
+        elif total >= x:
+            contest.win
+        else:
+            print("ISSUE PLEASE STAND BY")
         
+
+
     intro()
 
     

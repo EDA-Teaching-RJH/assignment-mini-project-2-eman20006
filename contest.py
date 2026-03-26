@@ -1,4 +1,5 @@
 
+import random
 ha = "Tim Host"
 
 host = {
@@ -131,6 +132,30 @@ sport1 = {
 "D": "Argentina"
 }
 
+
+
 def incorrect():
-        print(ha + ": Incorrect\n You score 0 points for this question")
-        
+        print(host["name"] + ": Incorrect\n You score 0 points for this question") #first try at having a function in my custom library
+
+def randpoint():
+        numb1 = random.randrange(0, 100,10)
+        print(numb1)  
+
+def wheels_spin():
+       
+       print(sport1["A"])
+
+def loss():
+            print(host["name"] + ": Unfortunately your score has been beaten!") #worked out how to access parts of dictionary in library
+            print(host["name"] + ": That is GAME OVER for you!")
+            print(host["name"] + ": Better luck next time")
+            print("SHUTTING DOWN")
+            quit()
+
+def tie():
+    print(host["name"] + ": It's a tie, we have multiple winners!")
+    print(host["name"] + ": In that case lets spin the prize wheel!")
+
+def win():
+    print(host["name"] + ": You are the winner")
+    print(host["name"] + ": Time for you to spin the prize wheel!")
