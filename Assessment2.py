@@ -7,6 +7,7 @@ cont = ["Bella", "Charlie", "Kian", "Max", "Zak"]
 points = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # this list is for the points per topic
 score = [0, 0, 0, 0, 0] #this is a list for each other contestant total
 ha = contest.host["name"]  #accessing data from dictionary from custom import
+top = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #numbers related to topic amount
 def main():
     print("Hello everyone and welcome to ...\nThe Big Pub Quiz!")
     
@@ -362,53 +363,32 @@ def main():
             
 
     def choice1_5():
-        number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
-        
+        #number = random.randint(1, 10) # random number generator to pick 1 of the 10 topics at random
+        numb = random.choice(top)
+        print(ha + ": Topic " + str(numb) + " has been chosen")
+        top.remove(numb)
+
+
+
+
+
+
+
         #number = 4
         #so the game is never completely the same each time
-        print(ha + ": Topic " + str(number) + " has been chosen")
+        #print(ha + ": Topic " + str(number) + " has been chosen")
         
-        from random import randint
+        #from random import randint
 
-        def random_exclude(*exclude):
-            exclude = set(exclude)
-            randInt = randint(1,10)
-            return random_exclude() if randInt in exclude else randInt 
+        #def random_exclude(*exclude):
+          #  exclude = set(exclude)
+           # randInt = randint(1,10)
+         #   return random_exclude() if randInt in exclude else randInt 
         
-        numb = (random_exclude(number))
+        #numb = (random_exclude(number))
         
         if numb == "":
             point_sum()
-
-        elif number == 1:
-            science() #each one of these calls a specific topic function
-           
-        elif number == 2:
-            maths()
-           
-        elif number == 3:
-            pop_culture()
-            
-        elif number == 4:
-            mystery_round()
-            
-        elif number == 5:
-            general_knowledge()
-        
-        elif number == 6:
-            food()
-
-        elif number == 7:
-            animals()
-
-        elif number == 8:
-            music()
-
-        elif number == 9:
-            history()
-            
-        elif number == 10:
-            sport()
 
         elif numb == 1:
             science() 
@@ -446,44 +426,51 @@ def main():
 
             
     def choice6():
-        numbrr = input(ha + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
-        numbr = int(re.sub(r'[^0-9 ]', '', numbrr)) #made this int so read it as number for if statements
-        print(ha + ": Topic " + str(numbr) + " has been chosen") #asks user to choose a topic and depending on input
-        #depends on which category find a way for this to work
-        if numbr == 1:
-            science()
+        if len(top) == []:
+            number = input(ha + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
+            numb = int(re.sub(r'[^0-9 ]', '', number)) #made this int so read it as number for if statements
+            print(ha + ": Topic " + str(numb) + " has been chosen") #asks user to choose a topic and depending on input
+            #depends on which category find a way for this to work
+            top.remove(numb)
+            if numb == 1:
+                science()
 
-        elif numbr == 2:
-            maths()
+            elif numb == 2:
+                maths()
 
-        elif numbr == 3:
-            pop_culture()
+            elif numb == 3:
+                pop_culture()
 
-        elif numbr == 4:
-            mystery_round()
+            elif numb == 4:
+                mystery_round()
 
-        elif numbr == 5:
-            general_knowledge()
+            elif numb == 5:
+                general_knowledge()
 
-        elif numbr == 6:
-            food()
+            elif numb == 6:
+                food()
 
-        elif numbr == 7:
-            animals()
+            elif numb == 7:
+                animals()
 
-        elif numbr == 8:
-            music()
+            elif numb == 8:
+                music()
 
-        elif numbr == 9:
-            history()
+            elif numb == 9:
+                history()
 
-        elif numbr == 10:
-            sport()
+            elif numb == 10:
+                sport()
+
+            else:
+                print(ha + ": Please stand by")
+                print("Incorrect or unavailable option input\nPlease try again")
+                choice6()
+        elif len(top) == 0:
+            point_sum()   
 
         else:
-            print(ha + ": Please stand by")
-            print("Incorrect option input\nPlease try again")
-            choice6()
+            print("error")
     
     def point_sum(): #when random numb can no longer generate, make it so it calls this function
         print(ha + ": That's the end of the questions\nLet's see how you did.")
