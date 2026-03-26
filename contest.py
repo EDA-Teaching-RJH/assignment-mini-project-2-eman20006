@@ -132,7 +132,18 @@ sport1 = {
 "D": "Argentina"
 }
 
-
+prize = {
+"1": "£10 gift voucher",
+"2": "£1000 cash prize",
+"3": "A Mystery holiday",
+"4": "A year supply deodorant",
+"5": "A house",
+"6": "A new bike",
+"7": "A new pair of socks",
+"8": "A car",
+"9": "Tickets to a movie premiere",
+"10": "A year supply of Nike shoes"
+}
 
 def incorrect():
         print(host["name"] + ": Incorrect\n You score 0 points for this question") #first try at having a function in my custom library
@@ -140,10 +151,74 @@ def incorrect():
 def randpoint():
         numb1 = random.randrange(0, 100,10)
         print(numb1)  
+    
+def game_finish():
+    print(host["name"] + ": Enjoy your prize")
+    print("GAME END\nSHUTTING DOWN")
+    quit()
 
-def wheels_spin():
-       
-       print(sport1["A"])
+def prize_collect():
+    spins = random.randrange(1, 11) #generate number 1 to 10
+    print(spins)
+    if spins == 1:
+         print(host["name"] + ": You have won" + prize[1]) 
+         game_finish()
+    elif spins == 2:
+        print(host["name"] + ": You have won" + prize[2]) 
+        game_finish()
+    elif spins == 3:
+         print(host["name"] + ": You have won" + prize[3]) 
+         game_finish()
+    elif spins == 4:
+         print(host["name"] + ": You have won" + prize[4]) 
+         game_finish()
+    elif spins == 5:
+         print(host["name"] + ": You have won" + prize[5]) 
+         game_finish()
+    elif spins == 6:
+         print(host["name"] + ": You have won" + prize[6]) 
+         game_finish()
+    elif spins == 7:
+         print(host["name"] + ": You have won" + prize[7]) 
+         game_finish()
+    elif spins == 8:
+         print(host["name"] + ": You have won" + prize[8]) 
+         game_finish()
+    elif spins == 9:
+         print(host["name"] + ": You have won" + prize[9]) 
+         game_finish()
+    elif spins == 10:
+         print(host["name"] + ": You have won" + prize[10]) 
+         game_finish()
+
+def spin_wheel():
+       spin = input("Would you like to spin the wheel? ")
+       if spin == "yes":
+        prize_collect()
+       elif spin == "no":
+        print(host["name"] + ": You have forfeited your spin.")
+        print("GAME OVER")
+        quit()
+       else: 
+        print("Invalid input")
+        spin_wheel()
+
+def spin_prize():
+       print(host["name"] + ": Here are the prizes:")
+       print("1. " + prize["1"])
+       print("2. " + prize["2"])
+       print("3. " + prize["3"])
+       print("4. " + prize["4"])
+       print("5. " + prize["5"])
+       print("6. " + prize["6"])
+       print("7. " + prize["7"])
+       print("8. " + prize["8"])
+       print("9. " + prize["9"])
+       print("10. " + prize["10"])
+       print(host["name"] + ": SPIN THAT WHEEL")
+       spin_wheel()
+              
+
 
 def loss():
             print(host["name"] + ": Unfortunately your score has been beaten!") #worked out how to access parts of dictionary in library
@@ -155,7 +230,9 @@ def loss():
 def tie():
     print(host["name"] + ": It's a tie, we have multiple winners!")
     print(host["name"] + ": In that case lets spin the prize wheel!")
+    spin_prize()
 
 def win():
     print(host["name"] + ": You are the winner")
     print(host["name"] + ": Time for you to spin the prize wheel!")
+    spin_prize()
