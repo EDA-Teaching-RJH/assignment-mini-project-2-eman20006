@@ -1,10 +1,6 @@
 import random
 ha = "Tim Host"
-host = {                   #dictionary of host data
-    "name": "Tim Host",     
-    "age": 42,              
-    "country": "England"    
-}
+
 cont1 = {                   #dictionary of contestant 1 data
     "name": "Bella Spooner",   
     "age": 24,              
@@ -125,59 +121,59 @@ prize = {        #dictionary of list of prizes
 "10": "A year supply of Nike shoes"
 }
 def incorrect():
-        print(host["name"] + ": Incorrect\n You score 0 points for this question") #first try at having a function in my custom library
+        print(ha + ": Incorrect\n You score 0 points for this question") #first try at having a function in my custom library
 #def randpoint():  #don't need this function as found a short cut which worked better on my main file
        # numb1 = random.randrange(0, 100,10)   prints random number from 0 to 100 in intervals of 10
        # print(numb1)  
 def game_finish():   
-    print(host["name"] + ": Enjoy your prize.\nThank you for playing the Big Pub Quiz.")   #congratulates and ends game
+    print(ha + ": Enjoy your prize.\nThank you for playing the Big Pub Quiz.")   #congratulates and ends game
     print("GAME END\nSHUTTING DOWN")
     quit()
 def prize_collect():
     spins = random.randrange(1, 11) #generate number from 1 to 10
     if spins == 1:       #number correlates to a prize which is printed as won, then calls game finish function
-         print(host["name"] + ": You have won " + prize["1"]) 
+         print(ha + ": You have won " + prize["1"]) 
          game_finish()
     elif spins == 2:
-        print(host["name"] + ": You have won " + prize["2"]) 
+        print(ha + ": You have won " + prize["2"]) 
         game_finish()
     elif spins == 3:
-         print(host["name"] + ": You have won " + prize["3"]) 
+         print(ha + ": You have won " + prize["3"]) 
          game_finish()
     elif spins == 4:
-         print(host["name"] + ": You have won " + prize["4"]) 
+         print(ha + ": You have won " + prize["4"]) 
          game_finish()
     elif spins == 5:
-         print(host["name"] + ": You have won " + prize["5"]) 
+         print(ha + ": You have won " + prize["5"]) 
          game_finish()
     elif spins == 6:
-         print(host["name"] + ": You have won " + prize["6"]) 
+         print(ha + ": You have won " + prize["6"]) 
          game_finish()
     elif spins == 7:
-         print(host["name"] + ": You have won " + prize["7"]) 
+         print(ha + ": You have won " + prize["7"]) 
          game_finish()
     elif spins == 8:
-         print(host["name"] + ": You have won " + prize["8"]) 
+         print(ha + ": You have won " + prize["8"]) 
          game_finish()
     elif spins == 9:
-         print(host["name"] + ": You have won " + prize["9"]) 
+         print(ha + ": You have won " + prize["9"]) 
          game_finish()
     elif spins == 10:
-         print(host["name"] + ": You have won " + prize["10"]) 
+         print(ha + ": You have won " + prize["10"]) 
          game_finish()
 def spin_wheel():
        spin = input("Would you like to spin the wheel? ")
        if spin == "yes":
         prize_collect()    #calls function prize collect function
        elif spin == "no":
-        print(host["name"] + ": You have forfeited your spin.")
+        print(ha + ": You have forfeited your spin.")
         print("GAME OVER")   #ends game based on user input
         quit()
        else: 
         print("Invalid input")
         spin_wheel() #calls spin wheel function, loops if input isn't yes or no
 def spin_prize():
-       print(host["name"] + ": Here are the prizes:")
+       print(ha + ": Here are the prizes:")
        print("1. " + prize["1"])
        print("2. " + prize["2"])    #prints out variables from dictionary and calls a function
        print("3. " + prize["3"])
@@ -188,19 +184,19 @@ def spin_prize():
        print("8. " + prize["8"])
        print("9. " + prize["9"])
        print("10. " + prize["10"])
-       print(host["name"] + ": SPIN THAT WHEEL")
+       print(ha + ": SPIN THAT WHEEL")
        spin_wheel()
 def loss():
-    print(host["name"] + ": Unfortunately your score has been beaten!") #worked out how to access parts of dictionary in library
-    print(host["name"] + ": That is GAME OVER for you!") #function says player loses and ends game
-    print(host["name"] + ": Better luck next time")
+    print(ha + ": Unfortunately your score has been beaten!") #worked out how to access parts of dictionary in library
+    print(ha+ ": That is GAME OVER for you!") #function says player loses and ends game
+    print(ha + ": Better luck next time")
     print("SHUTTING DOWN")
     quit()
 def tie():
-    print(host["name"] + ": It's a tie, we have multiple winners!")   #function with simple prints and calls another function
-    print(host["name"] + ": In that case lets spin the prize wheel!")
+    print(ha + ": It's a tie, we have multiple winners!")   #function with simple prints and calls another function
+    print(ha + ": In that case lets spin the prize wheel!")
     spin_prize()
 def win():
-    print(host["name"] + ": You are the winner")  #function with simple prints and calls another function
-    print(host["name"] + ": Time for you to spin the prize wheel!")
+    print(ha + ": You are the winner")  #function with simple prints and calls another function
+    print(ha + ": Time for you to spin the prize wheel!")
     spin_prize()
