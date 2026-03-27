@@ -9,7 +9,7 @@ score = [0, 0, 0, 0, 0] #this is a list for each other contestant total
 top = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #numbers related to topic amount
 def main():
     with open("intro.txt") as intro_file:  #added a basic file which is read and printed for an intro
-        print(intro_file.read()) #first use of cvs
+        print(intro_file.read()) #basic file i/0 use    going to try implement csv
 
     class Host:  #fist class made, simple but gets the point across
         def __init__(self, name, age, country, favsubj):
@@ -20,18 +20,17 @@ def main():
     host = Host("Tim Host", 42, "England", "Sharks")
 
     class Contestant: #created a class for contestants and replaced the dictionaries from the contest.py file
-        def __init__(self, name, age, country,feeling, favsubj): #makes it easier and neater to grab the information from the class
+        def __init__(self, name, age, country,feeling): #makes it easier and neater to grab the information from the class
             self.name = name
             self.age = age
             self.country = country
             self.feeling = feeling
-            self.favsubj = favsubj
-    contestant1 = Contestant("Bella Spooner", 24, "Germany","Confident", "Food")
-    contestant2 = Contestant("Charlie Beer", 36, "France","A little nervous", "Sport")
-    contestant3 = Contestant("Kian Franklin", 28, "England","Good thank you", "History")
-    contestant4 = Contestant("Max Hilling", 31, "Greece","Ready-ish", "Pop culture")
-    contestant5 = Contestant("Zak Cuts", 25, "Spain","Good", "Animals")
-    contestant6 = Contestant("Unknown", "Unknown", "Unknown","Unknown", "Unknown")
+    contestant1 = Contestant("Bella Spooner", 24, "Germany","Confident")
+    contestant2 = Contestant("Charlie Beer", 36, "France","A little nervous")
+    contestant3 = Contestant("Kian Franklin", 28, "England","Good thank you")
+    contestant4 = Contestant("Max Hilling", 31, "Greece","Ready-ish")
+    contestant5 = Contestant("Zak Cuts", 25, "Spain","Good")
+    contestant6 = Contestant("Unknown", "Unknown", "Unknown","Unknown")
 
     class Topics: #got rid of all the topic dictionaries and made them into a class
         def __init__(self, A, B, C, D): #makes it easier and neater to grab the information from the class
@@ -92,11 +91,11 @@ def main():
                 print(host.name + ": Here are your contestants for the night:")
                 #previusly i accessed dictionary data and made it equal to a variable to then add to a print function
                 #cut out middle-man and added dictinary data access code straight in the print function
-                print(pos[0], ": "+ contestant1.name + " " + str(contestant1.age)) #calls both list positions and class data for contestants
-                print(pos[1], ": "+ contestant2.name + " " + str(contestant2.age))
-                print(pos[2], ": "+ contestant3.name + " " + str(contestant3.age))
-                print(pos[3], ": "+ contestant4.name + " " + str(contestant4.age))
-                print(pos[4], ": "+ contestant5.name + " " + str(contestant5.age))
+                print(pos[0], ": "+ contestant1.name + " Age:" + str(contestant1.age)) #calls both list positions and class data for contestants
+                print(pos[1], ": "+ contestant2.name + " Age:" + str(contestant2.age))
+                print(pos[2], ": "+ contestant3.name + " Age:" + str(contestant3.age))
+                print(pos[3], ": "+ contestant4.name + " Age:" + str(contestant4.age))
+                print(pos[4], ": "+ contestant5.name + " Age:" + str(contestant5.age))
                 print(host.name + ": And finally, our special guest for the evening: ")
                 y = input("Name: ").capitalize() #make sure input has no added spaces or error adds
                 yy = re.sub(r'[^a-zA-Z ]', '', y).capitalize() #regex, returns a match for letters a to z upper and lower, code also captilizes first word
@@ -125,6 +124,7 @@ def main():
                 print(cont[2],": " + contestant4.feeling) 
                 print(cont[4],": " + contestant5.feeling) 
                 print(cont[5],": " + contestant6.feeling)
+
                 pick22() #calls function       
             elif pick1 == "no": #prints and ends code
                 print(host.name + ": GAME OVER")
@@ -503,6 +503,59 @@ def main():
         score[2] = cont3
         score[3] = cont4
         score[4] = cont5
+
+        with open ("score_contestant_sheet.csv", "w+") as file: #opening a csv file, thise code will automatically close it after
+            myfile = csv.writer(file) 
+            myfile.writerow(["Contestant number", "Contestant name", "Contestant age", "Contestant country", "Contestant feeling", "Contestant final Score"]) #got my main row for reference of variables
+            number = pos[0] #contestant position number taken from list
+            name = contestant1.name #rest od data taken from class for contestants
+            aged = contestant1.age
+            country = contestant1.country
+            feeling = contestant1.feeling
+            scoring = cont1
+            myfile.writerow([number, name, aged, country, feeling, scoring]) #writes a row in the csv file for each represented data point
+
+            number = pos[1]   #this layout is repeated for all contestants 1 to 6
+            name = contestant2.name
+            aged = contestant2.age
+            country = contestant2.country
+            feeling = contestant2.feeling
+            scoring = cont2
+            myfile.writerow([number, name, aged, country, feeling, scoring])
+
+            number = pos[2]
+            name = contestant3.name
+            aged = contestant3.age
+            country = contestant3.country
+            feeling = contestant3.feeling
+            scoring = cont3
+            myfile.writerow([number, name, aged, country, feeling, scoring])
+
+            number = pos[3]
+            name = contestant4.name
+            aged = contestant4.age
+            country = contestant4.country
+            feeling = contestant4.feeling
+            scoring = cont4
+            myfile.writerow([number, name, aged, country, feeling, scoring])
+
+            number = pos[4]
+            name = contestant5.name
+            aged = contestant5.age
+            country = contestant5.country
+            feeling = contestant5.feeling
+            scoring = cont5
+            myfile.writerow([number, name, aged, country, feeling, scoring])
+
+            number = pos[5]          #the reason this chunk of code is so far down is becuase it requires the contestants score
+            name = contestant6.name  #scores have only just been calculated and created at this point
+            aged = contestant6.age
+            country = contestant6.country
+            feeling = contestant6.feeling
+            scoring = total
+            myfile.writerow([number, name, aged, country, feeling, scoring]) #this is the last line for writing in the csv file
+            #the file will now have a row for each contestant with all their data from name to final score
+
         x = sorted(score) #sorts score list from lowest to highest
         big = x[4] #x[4] is going to be biggest number in score list
         if big == total: #if highest contestant points is equal to overall user total points  

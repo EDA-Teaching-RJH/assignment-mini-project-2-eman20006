@@ -3,7 +3,7 @@ ha = "Tim Host"
 
 topics = {              #dictionary of the 10 topic choices
     "1": "Science",
-    "2": "Maths",
+    "2": "Maths",           #I had a lot more dictionaries previously but managed to condense code into classes in main code file
     "3": "Pop Culture",
     "4": "Mystery round", 
     "5": "General Knowledge",
@@ -26,6 +26,7 @@ prize = {        #dictionary of list of prizes
 "9": "Tickets to a movie premiere",
 "10": "A year supply of Nike shoes"
 }
+
 def incorrect():
         print(ha + ": Incorrect\n You score 0 points for this question") #first try at having a function in my custom library
 #def randpoint():  #don't need this function as found a short cut which worked better on my main file
@@ -91,18 +92,18 @@ def spin_prize():
        print("9. " + prize["9"])
        print("10. " + prize["10"])
        print(ha + ": SPIN THAT WHEEL")
-       spin_wheel()
+       spin_wheel()  #calls wheel spin function
 def loss():
     print(ha + ": Unfortunately your score has been beaten!") #worked out how to access parts of dictionary in library
     print(ha+ ": That is GAME OVER for you!") #function says player loses and ends game
     print(ha + ": Better luck next time")
-    print("SHUTTING DOWN")
+    print("SHUTTING DOWN")  #ends game
     quit()
 def tie():
     print(ha + ": It's a tie, we have multiple winners!")   #function with simple prints and calls another function
     print(ha + ": In that case lets spin the prize wheel!")
-    spin_prize()
+    spin_prize()  #calls function 
 def win():
     print(ha + ": You are the winner")  #function with simple prints and calls another function
     print(ha + ": Time for you to spin the prize wheel!")
-    spin_prize()
+    spin_prize()  #calls function 
