@@ -8,11 +8,8 @@ points = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] # this list is for the points per topic
 score = [0, 0, 0, 0, 0] #this is a list for each other contestant total
 top = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] #numbers related to topic amount
 def main():
-    #intro_file = open("intro.txt")
-    #print(intro_file.read())      
-    #intro_file.close()
     with open("intro.txt") as intro_file:  #added a basic file which is read and printed for an intro
-        print(intro_file.read())  #simplified from above version
+        print(intro_file.read()) 
 
     class Host:
         def __init__(self, name, age, country, favsubj):
@@ -22,7 +19,36 @@ def main():
             self.favsubj = favsubj
     host = Host("Tim Host", 42, "England", "Sharks")
 
+    class Contestant: #created a class for contestants and replaced the dictionaries from the contes.py file
+        def __init__(self, name, age, country,feeling, favsubj): #makes it easier and neater to grab the information from the class
+            self.name = name
+            self.age = age
+            self.country = country
+            self.feeling = feeling
+            self.favsubj = favsubj
+    contestant1 = Contestant("Bella Spooner", 24, "Germany","Confident", "Food")
+    contestant2 = Contestant("Charlie Beer", 36, "France","A little nervous", "Sport")
+    contestant3 = Contestant("Kian Franklin", 28, "England","Good thank you", "History")
+    contestant4 = Contestant("Max Hilling", 31, "Greece","Ready-ish", "Pop culture")
+    contestant5 = Contestant("Zak Cuts", 25, "Spain","Good", "Animals")
+    contestant6 = Contestant("Unknown", "Unknown", "Unknown","Unknown", "Unknown")
 
+    class Topics:
+        def __init__(self, A, B, C, D): #makes it easier and neater to grab the information from the class
+            self.A = A
+            self.B = B
+            self.C = C
+            self.D = D
+    maths1 = Topics("16", "8", "4", "14")
+    science1 = Topics("Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen")
+    pop1 = Topics("1991", "1979", "1986", "2003")
+    general1 = Topics("Auguste Rodin", "Michelangelo", "Gian Lorenzo Bernini", "Donatello")
+    food1 = Topics("Walnut", "Cashew", "Hazlenut", "Almond")
+    animal1 = Topics("Lion", "Cheetah", "Leopard", "Pronghorn")
+    music1 = Topics("System of a down", "Hum", "Fontaines D.C", "Pierce the Veil")
+    history1 = Topics("1044", "1060", "1116", "1066")
+    sport1 = Topics("Germany", "Italy", "Brazil", "Argentina")
+    
     def forward():
         choice = input(host.name + ": Would you like to continue? ")
         if choice == "yes":
@@ -59,7 +85,54 @@ def main():
             age()
         else:
             print(host.name + ": Confirmed age is " + xx)
-            contest.cont6.update({"age": xx}) #when input confirmed as only number, updates data in dictionary
+            contestant6.name  = xx 
+    def troop():
+            pick1 = input(host.name + ": Would you like to continue? ").strip()
+            if pick1 == "yes": #runs code if player chooses to continue
+                print(host.name + ": Here are your contestants for the night:")
+                #previusly i accessed dictionary data and made it equal to a variable to then add to a print function
+                #cut out middle-man and added dictinary data access code straight in the print function
+                print(pos[0], ": "+ contestant1.name + " " + str(contestant1.age)) #calls both list positions and dictionary data from custom import
+                print(pos[1], ": "+ contestant2.name + " " + str(contestant2.age))
+                print(pos[2], ": "+ contestant3.name + " " + str(contestant3.age))
+                print(pos[3], ": "+ contestant4.name + " " + str(contestant4.age))
+                print(pos[4], ": "+ contestant5.name + " " + str(contestant5.age))
+                print(host.name + ": And finally, our special guest for the evening: ")
+                y = input("Name: ").capitalize() #make sure input has no added spaces or error adds
+                yy = re.sub(r'[^a-zA-Z ]', '', y).capitalize() #regex, returns a match for letters a to z upper and lower, code also captilizes first word
+                                                            #gets rid of symbols and numbers
+                def hello(to="world"):   #example of testing without just printing something, using a def function
+                    print(host.name + ": Hello ", to)   #this will greet player after inputting chosen name
+                if __name__ == "__intro__":
+                    intro()
+                hello(yy) #calls the greeting def function
+                age()  #calls age function from earlier
+                z = input("Country: ") 
+                zz = re.sub(r'[^a-zA-Z ]', '', z).capitalize() #regex similar written code as earlier
+                print(host.name + ": Confirmed country is " + zz)
+                contestant6.name = yy
+                contestant6.country = zz
+                pos.append("6") #adds to position number list
+                cont.append(yy) # adds to contestant name list, now parallel with number above
+                points.append(0) 
+                cont6 = input(host.name + ": How are we all feeling contestants? ") #prompts plaer input
+                cont66 = re.sub(r'[^a-zA-Z ]', '', cont6).capitalize() #regex aims to remove input errors
+                contestant6.feeling = cont66 
+                #previusly i accessed dictionary data and made it equal to a variable to then add to a print function
+                #cut out middle-man and added dictinary data access code straight in the print function
+                print(cont[0],": " + contestant1.feeling) 
+                print(cont[1],": " + contestant2.feeling) 
+                print(cont[2],": " + contestant3.feeling) 
+                print(cont[2],": " + contestant4.feeling) 
+                print(cont[4],": " + contestant5.feeling) 
+                print(cont[5],": " + contestant6.feeling)
+                pick22() #calls function       
+            elif pick1 == "no": #prints and ends code
+                print(host.name + ": GAME OVER")
+                print("SHUTTING DOWN ...")
+            else: #if neither "yes" or "no" are input, makes user try again
+                print(host.name + ": Invalid input")
+                troop() #calls back to start of def function where choice to continue or end        
             
     def intro(): #also function that gets called later, allows player to continue or end game
                  #additionally, has the intro to the game with interactive start-up
@@ -71,63 +144,18 @@ def main():
         x = "Monkeys"
         host.favsubj = x
         print("Favourite subject: " + host.favsubj)
-        pick1 = input(host.name + ": Would you like to continue? ")
-        if pick1 == "yes": #runs code if player chooses to continue
-            print(host.name + ": Here are your contestants for the night:")
-            #previusly i accessed dictionary data and made it equal to a variable to then add to a print function
-            #cut out middle-man and added dictinary data access code straight in the print function
-            print(pos[0], ": "+ cont[0] + " " + str(contest.cont1["age"])) #calls both list positions and dictionary data from custom import
-            print(pos[1], ": "+ cont[1] + " " + str(contest.cont2["age"]))
-            print(pos[2], ": "+ cont[2] + " " + str(contest.cont3["age"]))
-            print(pos[3], ": "+ cont[3] + " " + str(contest.cont4["age"]))
-            print(pos[4], ": "+ cont[4] + " " + str(contest.cont5["age"]))
-            print(host.name + ": And finally, our special guest for the evening: ")
-            y = input("Name: ").capitalize() #make sure input has no added spaces or error adds
-            yy = re.sub(r'[^a-zA-Z ]', '', y).capitalize() #regex, returns a match for letters a to z upper and lower, code also captilizes first word
-                                                           #gets rid of symbols and numbers
-            def hello(to="world"):   #example of testing without just printing something, using a def function
-                print(host.name + ": Hello ", to)   #this will greet player after inputting chosen name
-            if __name__ == "__intro__":
-                intro()
-            hello(yy) #calls the greeting def function
-            age()  #calls age function from earlier
-            z = input("Country: ") 
-            zz = re.sub(r'[^a-zA-Z ]', '', z).capitalize() #regex similar written code as earlier
-            print(host.name + ": Confirmed country is " + zz)
-            contest.cont6.update({"name": yy})  #updates data in specific dictionary, stores new data
-            contest.cont6.update({"country": zz}) #updates data in specific dictionary, stores new data
-            pos.append("6") #adds to position number list
-            cont.append(yy) # adds to contestant name list, now parallel with number above
-            points.append(0) 
-            cont6 = input(host.name + ": How are we all feeling contestants? ") #prompts plaer input
-            cont66 = re.sub(r'[^a-zA-Z ]', '', cont6).capitalize() #regex aims to remove input errors
-            contest.cont6.update({"feeling": cont66}) #updates data in specific dictionary, stores new data
-            #previusly i accessed dictionary data and made it equal to a variable to then add to a print function
-            #cut out middle-man and added dictinary data access code straight in the print function
-            print(cont[0],": " + contest.cont1["feeling"]) 
-            print(cont[1],": " + contest.cont2["feeling"]) 
-            print(cont[2],": " + contest.cont3["feeling"]) 
-            print(cont[2],": " + contest.cont4["feeling"]) 
-            print(cont[4],": " + contest.cont5["feeling"]) 
-            print(cont[5],": " + contest.cont6["feeling"])
-            pick22() #calls function       
-        elif pick1 == "no": #prints and ends code
-            print(host.name + ": GAME OVER")
-            print("SHUTTING DOWN ...")
-        else: #if neither "yes" or "no" are input, makes user try again
-            print(host.name + ": Invalid input")
-            intro() #calls back to start of def function where choice to continue or end
+        troop()
 
     def science(): #currently empty functions soon to be filled with questions and answers, not sure how I will display this tho
         print(host.name + ": You have chosen " + contest.topics["1"]) # considering I am grabbing dictionaries, probs should add to said dictionaries
         print(host.name + ": What is the most abundant gas in the Earth's atmosphere? ")
-        print("A: " + contest.science1["A"])    #calls variables from science dictionary as options for answers
-        print("B: " + contest.science1["B"])
-        print("C: " + contest.science1["C"])
-        print("D: " + contest.science1["D"])
+        print("A: " + science1.A)    #calls variables from science dictionary as options for answers
+        print("B: " + science1.B)
+        print("C: " + science1.C)
+        print("D: " + science1.D)
         answr = input("Choice: ").strip().capitalize() #capitalize answer and gets rid of any unecessary spaces
         if answr == "B":  #this is correct answer
-            print(host.name + ": " + contest.science1["B"] + " is correct")  #if inputted, highlights as correct, gives 10 points
+            print(host.name + ": " + science1.B + " is correct")  #if inputted, highlights as correct, gives 10 points
             print(host.name + ": You have won 10 points")
             points[0] = 10   #changes variable in specific part of list to number 10, required for later
             forward()  #to continue game, calls forward function
@@ -142,10 +170,10 @@ def main():
         print(host.name + ": You have chosen " + contest.topics["2"]) 
         print(host.name + ": The product of which 2 options, makes 64?\n Answers must be individually submitted as numbers.")
         #specified above to make eaiser for me to produce the product of the 2 numbers after the answer
-        print("A: " + contest.maths1["A"])
-        print("B: " + contest.maths1["B"]) 
-        print("C: " + contest.maths1["C"])
-        print("D: " + contest.maths1["D"])
+        print("A: " + maths1.A)
+        print("B: " + maths1.B) 
+        print("C: " + maths1.C)
+        print("D: " + maths1.D)
         aaa = (input("Choice: ")) #prompts input
         bbb = (input("Choice: "))
         aa = (re.sub(r'[^0-9 ]', '', aaa)) #gets rid of anything that isn't a number
@@ -173,13 +201,13 @@ def main():
     def pop_culture():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["3"])
         print(host.name + ": What year was the first animated transformers film released? ")
-        print("A: " + contest.pop1["A"])
-        print("B: " + contest.pop1["B"])
-        print("C: " + contest.pop1["C"])
-        print("D: " + contest.pop1["D"])
+        print("A: " + pop1.A)
+        print("B: " + pop1.B)
+        print("C: " + pop1.C)
+        print("D: " + pop1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "C":
-            print(host.name + ": " + contest.pop1["C"] + " is correct")
+            print(host.name + ": " + pop1.C + " is correct")
             print(host.name + ": You have won 10 points")
             points[2] = 10
             forward()
@@ -208,13 +236,13 @@ def main():
     def general_knowledge():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["5"])
         print(host.name + ": Question: Who made the sculpture, The Thinker? ")
-        print("A: " + contest.general1["A"])
-        print("B: " + contest.general1["B"])
-        print("C: " + contest.general1["C"])
-        print("D: " + contest.general1["D"])
+        print("A: " + general1.A)
+        print("B: " + general1.B)
+        print("C: " + general1.C)
+        print("D: " + general1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "A":
-            print(host.name + ": " + contest.general1["A"] + " is correct")
+            print(host.name + ": " + general1.A + " is correct")
             print(host.name + ": You have won 10 points")
             points[4] = 10
             forward()
@@ -228,13 +256,13 @@ def main():
     def food():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["6"])
         print(host.name + ": Which nut is used to make marzipan? ")
-        print("A: " + contest.food1["A"])
-        print("B: " + contest.food1["B"])
-        print("C: " + contest.food1["C"])
-        print("D: " + contest.food1["D"])
+        print("A: " + food1.A)
+        print("B: " + food1.B)
+        print("C: " + food1.C)
+        print("D: " + food1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "D":
-            print(host.name + ": " + contest.food1["D"] + " is correct")
+            print(host.name + ": " + food1.D + " is correct")
             print(host.name + ": You have won 10 points")
             points[5] = 10
             forward()
@@ -248,13 +276,13 @@ def main():
     def animals():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["7"])
         print(host.name + ": Which land animal can run the fastest? ")
-        print("A: " + contest.animal1["A"])
-        print("B: " + contest.animal1["B"])
-        print("C: " + contest.animal1["C"])
-        print("D: " + contest.animal1["D"])
+        print("A: " + animal1.A)
+        print("B: " + animal1.B)
+        print("C: " + animal1.C)
+        print("D: " + animal1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "B":
-            print(host.name + ": " + contest.animal1["B"] + " is correct")
+            print(host.name + ": " + animal1.B + " is correct")
             print(host.name + ": You have won 10 points")
             points[6] = 10
             forward()
@@ -268,13 +296,13 @@ def main():
     def music():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["8"])
         print(host.name + ": Which music group released the song, Stars, in 1995? ")
-        print("A: " + contest.music1["A"])
-        print("B: " + contest.music1["B"])
-        print("C: " + contest.music1["C"])
-        print("D: " + contest.music1["D"])
+        print("A: " + music1.A)
+        print("B: " + music1.B)
+        print("C: " + music1.C)
+        print("D: " + music1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "B":
-            print(host.name + ": " + contest.music1["B"] + " is correct")
+            print(host.name + ": " + music1.B + " is correct")
             print(host.name + ": You have won 10 points")
             points[7] = 10
             forward()
@@ -288,13 +316,13 @@ def main():
     def history():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["9"])
         print(host.name + ": When was the battle of Normandy? ")
-        print("A: " + contest.history1["A"])
-        print("B: " + contest.history1["B"])
-        print("C: " + contest.history1["C"])
-        print("D: " + contest.history1["D"])
+        print("A: " + history1.A)
+        print("B: " + history1.B)
+        print("C: " + history1.C)
+        print("D: " + history1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "D":
-            print(host.name + ": " + contest.history1["D"] + " is correct")
+            print(host.name + ": " + history1.D + " is correct")
             print(host.name + ": You have won 10 points")
             points[8] = 10
             forward()
@@ -308,13 +336,13 @@ def main():
     def sport():  #similar to def science function but with respective information and data used
         print(host.name + ": You have chosen " + contest.topics["10"])
         print(host.name + ": Which country has won the most FIFA world cup titles? ")
-        print("A: " + contest.sport1["A"])
-        print("B: " + contest.sport1["B"])
-        print("C: " + contest.sport1["C"])
-        print("D: " + contest.sport1["D"])
+        print("A: " + sport1.A)
+        print("B: " + sport1.B)
+        print("C: " + sport1.C)
+        print("D: " + sport1.D)
         answr = input("Choice: ").strip().capitalize()
         if answr == "C":
-            print(host.name + ": " + contest.sport1["C"] + " is correct")
+            print(host.name + ": " + sport1.C + " is correct")
             print(host.name + ": You have won 10 points")
             points[9] = 10
             forward()
@@ -342,24 +370,24 @@ def main():
         numb1 = random.randrange(1, 7) #picks a random number from 1, upto but not including 7, representing contestants
         if numb1 == 1: #formatting like this 
             #meant less repeated lines of similar code
-            print(host.name + ": Contestant "  + contest.cont1["name"] + " has been chosen")
-            print(host.name + ": Which topic would you like contestant " + contest.cont1["name"] + "? ")
+            print(host.name + ": Contestant "  + contestant1.name + " has been chosen")
+            print(host.name + ": Which topic would you like contestant " + contestant1.name + "? ")
             choice1_5() #as 1-5 arent users, I call this function
         elif numb1 == 2:
-            print(host.name + ": Contestant "  + contest.cont2["name"] + " has been chosen")
-            print(host.name + ": Which topic would you like contestant " + contest.cont2["name"] + "? ")
+            print(host.name + ": Contestant "  + contestant2.name + " has been chosen")
+            print(host.name + ": Which topic would you like contestant " + contestant2.name + "? ")
             choice1_5()
         elif numb1 == 3:
-            print(host.name + ": Contestant "  + contest.cont3["name"] + " has been chosen")
-            print(host.name + ": Which topic would you like contestant " + contest.cont3["name"] + "? ")
+            print(host.name + ": Contestant "  + contestant3.name + " has been chosen")
+            print(host.name + ": Which topic would you like contestant " + contestant3.name + "? ")
             choice1_5()
         elif numb1 == 4:
-            print(host.name + ": Contestant "  + contest.cont4["name"] + " has been chosen")
-            print(host.name + ": Which topic would you like contestant " + contest.cont4["name"] + "? ")
+            print(host.name + ": Contestant "  + contestant4.name + " has been chosen")
+            print(host.name + ": Which topic would you like contestant " + contestant4.name + "? ")
             choice1_5()
         elif numb1 == 5:
-            print(host.name + ": Contestant "  + contest.cont5["name"] + " has been chosen")
-            print(host.name + ": Which topic would you like contestant " + contest.cont5["name"] + "? ")
+            print(host.name + ": Contestant "  + contestant5.name + " has been chosen")
+            print(host.name + ": Which topic would you like contestant " + contestant5.name + "? ")
             choice1_5()
         elif numb1 == 6: #this is user number
             choice6() #calls this function
@@ -409,7 +437,7 @@ def main():
         if len(top) == 0: #if there are no more numbers to call from a list then goes to point summary
             point_sum()
         else:
-            numbers = input(host.name + ": Which topic would you like contestant " + contest.cont6["name"] + "? ")
+            numbers = input(host.name + ": Which topic would you like contestant " + contestant6.name + "? ")
             numbnumb = (re.sub(r'[^0-9 ]', '', numbers)) #made this int so read it as number for if statements
             if numbnumb == "":
                     print("Incorrect or unavailable option input\nPlease try again")
@@ -458,7 +486,7 @@ def main():
         total = 0  #starts total = 0
         for num in points: #for numbers in the list points
             total += num  #adds numbers together and to total
-        print(host.name + ": " + contest.cont6["name"] + f", your total points are: {total}/100") #prints user total
+        print(host.name + ": " + contestant6.name + f", your total points are: {total}/100") #prints user total
         print(host.name + ": Let's see what our other contestants got:")
         print("Generating results:")
         cont1 = random.randrange(0, 110,10) #randomly generates a number between 0 and 100 in intervals of 10, similar to points system
@@ -466,11 +494,11 @@ def main():
         cont3 = random.randrange(0, 110,10)
         cont4 = random.randrange(0, 110,10)
         cont5 = random.randrange(0, 110,10)
-        print(host.name + ": " + contest.cont1["name"] + " scored " + str(cont1)) #as random number is integer, prints it as a str
-        print(host.name + ": " + contest.cont2["name"] + " scored " + str(cont2)) #refers to player and their points
-        print(host.name + ": " + contest.cont3["name"] + " scored " + str(cont3))
-        print(host.name + ": " + contest.cont4["name"] + " scored " + str(cont4))
-        print(host.name + ": " + contest.cont5["name"] + " scored " + str(cont5))
+        print(host.name + ": " + contestant1.name + " scored " + str(cont1)) #as random number is integer, prints it as a str
+        print(host.name + ": " + contestant2.name + " scored " + str(cont2)) #refers to player and their points
+        print(host.name + ": " + contestant3.name + " scored " + str(cont3))
+        print(host.name + ": " + contestant4.name + " scored " + str(cont4))
+        print(host.name + ": " + contestant5.name + " scored " + str(cont5))
         score[0] = cont1 #makes random number a variable in score list
         score[1] = cont2
         score[2] = cont3
@@ -478,10 +506,10 @@ def main():
         score[4] = cont5
         x = sorted(score) #sorts score list from lowest to highest
         big = x[4] #x[4] is going to be biggest number in score list
-        if big >= total: #if highest contestant points is greater than overall user total points 
-            contest.loss() #calls loss function
-        elif big == total: #if highest contestant points is equal to overall user total points 
+        if big == total: #if highest contestant points is equal to overall user total points  
             contest.tie() #calls tie function
+        elif big >= total: #if highest contestant points is greater than overall user total points
+            contest.loss() #calls loss function
         elif total >= big: #if overall user total points is greater than highest contestant points
             contest.win() #call win function
         else:

@@ -1,47 +1,6 @@
 import random
 ha = "Tim Host"
 
-cont1 = {                   #dictionary of contestant 1 data
-    "name": "Bella Spooner",   
-    "age": 24,              
-    "country": "Germany",   
-    "feeling": "Confident",  
-    "favesubj": "Food"      
-}
-cont2 = {                   #dictionary of contestant 2 data
-    "name": "Charlie Beer",
-    "age": 36,  
-    "country": "France",
-    "feeling": "A little nervous",
-    "favesubj": "Sport"
-}
-cont3 = {                   #dictionary of contestant 3 data
-    "name": "Kian Franklin",
-    "age": 28,  
-    "country": "England",
-    "feeling": "Good thank you",
-    "favesubj": "History"
-}
-cont4 = {                   #dictionary of contestant 4 data
-    "name": "Max Hilling",
-    "age": 31,  
-    "country": "Greece",
-    "feeling": "Ready-ish",
-    "favesubj": "Pop Culture"
-}
-cont5 = {               #dictionary of contestant 5 data
-    "name": "Zak Cuts",
-    "age": 25,  
-    "country": "Spain",
-    "feeling": "Good",
-    "favesubj": "Animals"
-}
-cont6 = {               #dictionary to store player inputs 
-    "name": "Unkown",
-    "age": "Unknown",  
-    "country": "Unknown",
-    "feeling": "Unknown",
-}
 topics = {              #dictionary of the 10 topic choices
     "1": "Science",
     "2": "Maths",
@@ -54,60 +13,7 @@ topics = {              #dictionary of the 10 topic choices
     "9": "History",
     "10": "Sport"
 }
-maths1 = {                  #dictionary of maths answer choices
-"A": "16",
-"B": "8",
-"C": "4",
-"D": "14"
-}
-science1 = {                #dictionary of science answer choices
-"A": "Oxygen",
-"B": "Nitrogen",
-"C": "Carbon Dioxide",
-"D": "Hydrogen"
-}
-pop1 = {                #dictionary of pop culture answer choices
-"A": "1991",
-"B": "1979",
-"C": "1986",
-"D": "2003"
-}
-general1 = {                #dictionary of general knowledge answer choices
-"A": "Auguste Rodin",
-"B": "Michelangelo",
-"C": "Gian Lorenzo Bernini",
-"D": "Donatello"
-}
-food1 = {               #dictionary of food answer choices
-"A": "Walnut",
-"B": "Cashew",
-"C": "Hazlenut",
-"D": "Almond"
-}
-animal1 = {             #dictionary of animal answer choices
-"A": "Lion",
-"B": "Cheetah",
-"C": "Leopard",
-"D": "Pronghorn"
-}
-music1 = {              #dictionary of music answer choices
-"A": "System of a down",
-"B": "Hum",
-"C": "Fontaines D.C",
-"D": "Pierce the Veil"
-}
-history1 = {            #dictionary of history answer choices
-"A": "1044",
-"B": "1060",
-"C": "1116",
-"D": "1066"
-}
-sport1 = {              #dictionary of sport answer choices
-"A": "Germany",
-"B": "Italy",
-"C": "Brazil",
-"D": "Argentina"
-}
+
 prize = {        #dictionary of list of prizes
 "1": "£10 gift voucher",
 "2": "£50,000 cash prize",
